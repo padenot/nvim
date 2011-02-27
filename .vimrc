@@ -121,3 +121,5 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#222222
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#333333
 
 let g:indent_guides_guide_size = 2
+
+noremap / /\v
