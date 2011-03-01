@@ -129,10 +129,10 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 
 " Mapping for tabularize plugin
 if exists(":Tabularize")
-    nmap <Leader>a= :Tabularize /=<CR>
-    vmap <Leader>a= :Tabularize /=<CR>
-    vmap <Leader>z| :Tabularize /|<CR>
-    vmap <Leader>z| :Tabularize /|<CR>
+    noremap <Leader>a= :Tabularize /=<CR>
+    noremap <Leader>a= :Tabularize /=<CR>
+    noremap <Leader>z| :Tabularize /|<CR>
+    noremap <Leader>z| :Tabularize /|<CR>
 endif
 
 " Indent guide configuration
