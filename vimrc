@@ -75,6 +75,10 @@ set wildignore+=*.o,*.obj,.git
 " Add · for trailing spaces.
 set list listchars=tab:\ \ ,trail:·
 
+" Status bar
+set statusline=%F%m%r%h%w\ %04v
+set laststatus=2 
+
 " Set the GUI Size to one screen
 au GUIEnter * set lines=73 columns=84
 " Set nocompatible
