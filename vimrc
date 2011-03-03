@@ -79,6 +79,9 @@ set list listchars=tab:\ \ ,trail:·
 set statusline=%F%m%r%h%w\ %04v
 set laststatus=2 
 
+" SCons support
+set makeprg=scons
+
 " Set the GUI Size to one screen
 au GUIEnter * set lines=73 columns=84
 " Set nocompatible
