@@ -63,7 +63,7 @@ set guioptions-=b
 " Copy visual area to paste buffer
 set go+=a
 " Press F4 to (silently) turn off highlighting and clear any message already displayed.
-:noremap <silent> <F4> :silent noh<Bar>echo<CR>
+noremap <silent> <F4> :silent noh<Bar>echo<CR>
 " Allow backspace in insert mode like in any other text editor
 set backspace=indent,eol,start 
 " Set the dictionnary to french
@@ -80,7 +80,7 @@ set statusline=%F%m%r%h%w\ %04v
 set laststatus=2 
 
 " SCons support
-set makeprg=scons
+set makeprg=scons\ -u\ \.
 
 " Set the GUI Size to one screen
 au GUIEnter * set lines=73 columns=84
