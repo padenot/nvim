@@ -152,6 +152,10 @@ let g:indent_guides_guide_size = 2
 " F5 toogles to Gundo panel
 nnoremap <F5> :GundoToggle<CR>
 
+" Tag list toggle
+noremap <F7> :TlistToggle<CR>
+
+
 " Command T mappings : F6 recreates cache
 noremap <F6> :CommandTFlush<CR>
 

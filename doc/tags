@@ -3,10 +3,12 @@
 'indent_guides_guide_size'	indent_guides.txt	/*'indent_guides_guide_size'*
 'indent_guides_indent_levels'	indent_guides.txt	/*'indent_guides_indent_levels'*
 'indent_guides_start_level'	indent_guides.txt	/*'indent_guides_start_level'*
+'syntastic_auto_jump'	syntastic.txt	/*'syntastic_auto_jump'*
 'syntastic_auto_loc_list'	syntastic.txt	/*'syntastic_auto_loc_list'*
 'syntastic_disabled_filetypes'	syntastic.txt	/*'syntastic_disabled_filetypes'*
 'syntastic_enable_signs'	syntastic.txt	/*'syntastic_enable_signs'*
 'syntastic_quiet_warnings'	syntastic.txt	/*'syntastic_quiet_warnings'*
+'syntastic_stl_format'	syntastic.txt	/*'syntastic_stl_format'*
 :AlignCenter	textformat.txt	/*:AlignCenter*
 :AlignJustify	textformat.txt	/*:AlignJustify*
 :AlignLeft	textformat.txt	/*:AlignLeft*
