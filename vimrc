@@ -63,7 +63,7 @@ set guioptions-=b
 " Copy visual area to paste buffer
 set go+=a
 " Press F4 to (silently) turn off highlighting and clear any message already displayed.
-noremap <silent> <F4> :silent noh<Bar>echo<CR>
+map <silent> <F4> :silent noh<Bar>echo<CR>
 " Allow backspace in insert mode like in any other text editor
 set backspace=indent,eol,start 
 " Set the dictionnary to french
@@ -100,6 +100,8 @@ augroup END
 
 " SConscript & SConstruct are python
 au BufRead,BufNewFile {SConscript,SConstruct}  set ft=python
+" .rl (ragel parsing file) should be highlighted as C
+au BufRead,BufNewFile {*.rl} set ft=c
 " Respect PEP8 while editing python
 au FileType python  set tabstop=4 textwidth=79
 " When using make, we shouldn't expand tabs.
