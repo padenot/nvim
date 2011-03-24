@@ -1,4 +1,4 @@
-# Paul's .vim direcotory
+# Paul's .vim directory
 
 This is my ViM configuration, containing all my plugins, and my .vimrc file.
 It requires ViM 7.3 for the Gundo plugin to work. ViM has to be compiled with
@@ -8,6 +8,8 @@ that it has been compiled to (use the  ``ldd`` command for troubleshooting).
 I shall warn that I prefer spaces over tabs, and like 2 space indent.
 
 You should simlink the vimrc file to ~/.vimrc, for this configuration to work.
+
+    ln -s ~/.vim/vimrc ~/.vimrc
 
 Also, command-t should be installed manually:
 
