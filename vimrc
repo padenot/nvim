@@ -71,7 +71,7 @@ set dictionary+="/usr/share/dict/french"
 " Set the Doxygen style comments, to ease the writing of documentation
 set comments=s1:/**,mb:*,ex:*/
 " We will almost never open .o in vim, so remove them from matching
-set wildignore+=*.o,*.obj,.git
+set wildignore+=*.o,*.obj,.git,*.swp,*.svn
 " Add · for trailing spaces.
 set list listchars=tab:\ \ ,trail:·
 
@@ -161,3 +161,11 @@ noremap <F7> :TlistToggle<CR>
 " Command T mappings : F6 recreates cache
 noremap <F6> :CommandTFlush<CR>
 
+" Type :w!! when forgot sudo and editing a file.
+cmap w!! w !sudo tee % >/dev/null
+
+" Temporary
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
