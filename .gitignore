@@ -2,3 +2,4 @@ tags/cpp_src
 .VimballRecord
 *.o
 *.so
+.netrwhist

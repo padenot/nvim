@@ -63,7 +63,7 @@ set guioptions-=b
 " Copy visual area to paste buffer
 set go+=a
 " Press F4 to (silently) turn off highlighting and clear any message already displayed.
-map <silent> <F4> :silent noh<Bar>echo<CR>
+map <silent> <F4> :silent noh<CR>
 " Allow backspace in insert mode like in any other text editor
 set backspace=indent,eol,start 
 " Set the dictionnary to french
