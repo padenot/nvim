@@ -15,6 +15,8 @@ let mapleader = ","
 let c_comment_strings=1
 " Enable syntax highlighting
 syntax on
+" Color scheme.
+color slate
 " Highlight matched pattern when searching or replacing.
 set hlsearch
 " Show the line numbers.
@@ -47,8 +49,6 @@ set tabstop=2
 set expandtab 
 " Case sensitive seach if a capital is used in the search pattern
 set smartcase
-" Color scheme.
-color slate
 " Font in GUI mode.
 "set guifont=Monospace\ 8
 set guifont=Droid\ Sans\ Mono\ 8
@@ -157,15 +157,18 @@ nnoremap <F5> :GundoToggle<CR>
 " Tag list toggle
 noremap <F7> :TlistToggle<CR>
 
-
-" Command T mappings : F6 recreates cache
-noremap <F6> :CommandTFlush<CR>
+" Control tab switches between cpp an .h file, as in Eclipse
+map <C-Tab> :A<CR><Esc>
 
 " Type :w!! when forgot sudo and editing a file.
 cmap w!! w !sudo tee % >/dev/null
 
 " Temporary
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
+noremap <up> <nop>
+noremap <down> <nop>
+noremap <left> <nop>
+noremap <right> <nop>
+noremap <C-J> :silent :tabprev<CR><Esc>
+noremap <C-K> :silent :tabnext<CR><Esc>
+
+map <Leader>t :silent :FufCoverageFile <CR><Esc>
