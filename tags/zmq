@@ -1,0 +1,257 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+EADDRINUSE	zmq.h	90;"	d
+EADDRNOTAVAIL	zmq.h	93;"	d
+ECONNREFUSED	zmq.h	96;"	d
+EFSM	zmq.h	103;"	d
+EINPROGRESS	zmq.h	99;"	d
+EMTHREAD	zmq.h	106;"	d
+ENETDOWN	zmq.h	87;"	d
+ENOBUFS	zmq.h	84;"	d
+ENOCOMPATPROTO	zmq.h	104;"	d
+ENOTSUP	zmq.h	78;"	d
+EPROTONOSUPPORT	zmq.h	81;"	d
+ETERM	zmq.h	105;"	d
+ZMQ_AFFINITY	zmq.h	192;"	d
+ZMQ_BACKLOG	zmq.h	207;"	d
+ZMQ_DEALER	zmq.h	178;"	d
+ZMQ_DELIMITER	zmq.h	129;"	d
+ZMQ_DOWNSTREAM	zmq.h	187;"	d
+ZMQ_EVENTS	zmq.h	203;"	d
+ZMQ_EXPORT	zmq.h	258;"	d
+ZMQ_EXPORT	zmq.h	37;"	d
+ZMQ_EXPORT	zmq.h	39;"	d
+ZMQ_EXPORT	zmq.h	43;"	d
+ZMQ_EXPORT	zmq.h	45;"	d
+ZMQ_EXPORT	zmq.h	47;"	d
+ZMQ_EXPORT	zmq_utils.h	31;"	d
+ZMQ_EXPORT	zmq_utils.h	33;"	d
+ZMQ_EXPORT	zmq_utils.h	37;"	d
+ZMQ_EXPORT	zmq_utils.h	39;"	d
+ZMQ_EXPORT	zmq_utils.h	41;"	d
+ZMQ_EXPORT	zmq_utils.h	58;"	d
+ZMQ_FD	zmq.h	202;"	d
+ZMQ_FORWARDER	zmq.h	253;"	d
+ZMQ_HAUSNUMERO	zmq.h	74;"	d
+ZMQ_HWM	zmq.h	190;"	d
+ZMQ_IDENTITY	zmq.h	193;"	d
+ZMQ_LINGER	zmq.h	205;"	d
+ZMQ_MAKE_VERSION	zmq.h	60;"	d
+ZMQ_MAX_VSM_SIZE	zmq.h	125;"	d
+ZMQ_MCAST_LOOP	zmq.h	198;"	d
+ZMQ_MSG_MORE	zmq.h	135;"	d
+ZMQ_MSG_SHARED	zmq.h	136;"	d
+ZMQ_NOBLOCK	zmq.h	212;"	d
+ZMQ_PAIR	zmq.h	173;"	d
+ZMQ_POLLERR	zmq.h	232;"	d
+ZMQ_POLLIN	zmq.h	230;"	d
+ZMQ_POLLOUT	zmq.h	231;"	d
+ZMQ_PUB	zmq.h	174;"	d
+ZMQ_PULL	zmq.h	180;"	d
+ZMQ_PUSH	zmq.h	181;"	d
+ZMQ_QUEUE	zmq.h	254;"	d
+ZMQ_RATE	zmq.h	196;"	d
+ZMQ_RCVBUF	zmq.h	200;"	d
+ZMQ_RCVMORE	zmq.h	201;"	d
+ZMQ_RECONNECT_IVL	zmq.h	206;"	d
+ZMQ_RECONNECT_IVL_MAX	zmq.h	209;"	d
+ZMQ_RECOVERY_IVL	zmq.h	197;"	d
+ZMQ_RECOVERY_IVL_MSEC	zmq.h	208;"	d
+ZMQ_REP	zmq.h	177;"	d
+ZMQ_REQ	zmq.h	176;"	d
+ZMQ_ROUTER	zmq.h	179;"	d
+ZMQ_SNDBUF	zmq.h	199;"	d
+ZMQ_SNDMORE	zmq.h	213;"	d
+ZMQ_STREAMER	zmq.h	252;"	d
+ZMQ_SUB	zmq.h	175;"	d
+ZMQ_SUBSCRIBE	zmq.h	194;"	d
+ZMQ_SWAP	zmq.h	191;"	d
+ZMQ_TYPE	zmq.h	204;"	d
+ZMQ_UNSUBSCRIBE	zmq.h	195;"	d
+ZMQ_UPSTREAM	zmq.h	186;"	d
+ZMQ_VERSION	zmq.h	62;"	d
+ZMQ_VERSION_MAJOR	zmq.h	56;"	d
+ZMQ_VERSION_MINOR	zmq.h	57;"	d
+ZMQ_VERSION_PATCH	zmq.h	58;"	d
+ZMQ_VSM	zmq.h	130;"	d
+ZMQ_XPUB	zmq.h	182;"	d
+ZMQ_XREP	zmq.h	185;"	d
+ZMQ_XREQ	zmq.h	184;"	d
+ZMQ_XSUB	zmq.h	183;"	d
+__ZMQ_HPP_INCLUDED__	zmq.hpp	22;"	d
+__ZMQ_H_INCLUDED__	zmq.h	22;"	d
+__ZMQ_UTILS_H_INCLUDED__	zmq_utils.h	22;"	d
+__anon1::content	zmq.h	/^    void *content;$/;"	m	struct:__anon1	access:public
+__anon1::flags	zmq.h	/^    unsigned char flags;$/;"	m	struct:__anon1	access:public
+__anon1::vsm_data	zmq.h	/^    unsigned char vsm_data [ZMQ_MAX_VSM_SIZE];$/;"	m	struct:__anon1	access:public
+__anon1::vsm_size	zmq.h	/^    unsigned char vsm_size;$/;"	m	struct:__anon1	access:public
+__anon2::events	zmq.h	/^    short events;$/;"	m	struct:__anon2	access:public
+__anon2::fd	zmq.h	/^    SOCKET fd;$/;"	m	struct:__anon2	access:public
+__anon2::fd	zmq.h	/^    int fd;$/;"	m	struct:__anon2	access:public
+__anon2::revents	zmq.h	/^    short revents;$/;"	m	struct:__anon2	access:public
+__anon2::socket	zmq.h	/^    void *socket;$/;"	m	struct:__anon2	access:public
+bind	zmq.hpp	/^        inline void bind (const char *addr_)$/;"	f	class:zmq::socket_t	access:public	signature:(const char *addr_)
+close	zmq.hpp	/^        inline void close()$/;"	f	class:zmq::socket_t	access:public	signature:()
+connect	zmq.hpp	/^        inline void connect (const char *addr_)$/;"	f	class:zmq::socket_t	access:public	signature:(const char *addr_)
+content	zmq.h	/^    void *content;$/;"	m	struct:__anon1	access:public
+context_t	zmq.hpp	/^        context_t (const context_t&);$/;"	p	class:zmq::context_t	access:private	signature:(const context_t&)
+context_t	zmq.hpp	/^        inline context_t (int io_threads_)$/;"	f	class:zmq::context_t	access:public	signature:(int io_threads_)
+context_t	zmq.hpp	/^    class context_t$/;"	c	namespace:zmq
+copy	zmq.hpp	/^        inline void copy (message_t *msg_)$/;"	f	class:zmq::message_t	access:public	signature:(message_t *msg_)
+data	zmq.hpp	/^        inline void *data ()$/;"	f	class:zmq::message_t	access:public	signature:()
+device	zmq.hpp	/^    inline void device (int device_, void * insocket_, void* outsocket_)$/;"	f	namespace:zmq	signature:(int device_, void * insocket_, void* outsocket_)
+errnum	zmq.hpp	/^        int errnum;$/;"	m	class:zmq::error_t	access:private
+error_t	zmq.hpp	/^        error_t () : errnum (zmq_errno ()) {}$/;"	f	class:zmq::error_t	access:public	signature:()
+error_t	zmq.hpp	/^    class error_t : public std::exception$/;"	c	namespace:zmq	inherits:std::exception
+events	zmq.h	/^    short events;$/;"	m	struct:__anon2	access:public
+fd	zmq.h	/^    SOCKET fd;$/;"	m	struct:__anon2	access:public
+fd	zmq.h	/^    int fd;$/;"	m	struct:__anon2	access:public
+flags	zmq.h	/^    unsigned char flags;$/;"	m	struct:__anon1	access:public
+free_fn	zmq.hpp	/^    typedef zmq_free_fn free_fn;$/;"	t	namespace:zmq
+getsockopt	zmq.hpp	/^        inline void getsockopt (int option_, void *optval_,$/;"	f	class:zmq::socket_t	access:public	signature:(int option_, void *optval_, size_t *optvallen_)
+message_t	zmq.hpp	/^        inline message_t ()$/;"	f	class:zmq::message_t	access:public	signature:()
+message_t	zmq.hpp	/^        inline message_t (size_t size_)$/;"	f	class:zmq::message_t	access:public	signature:(size_t size_)
+message_t	zmq.hpp	/^        inline message_t (void *data_, size_t size_, free_fn *ffn_,$/;"	f	class:zmq::message_t	access:public	signature:(void *data_, size_t size_, free_fn *ffn_, void *hint_ = NULL)
+message_t	zmq.hpp	/^        message_t (const message_t&);$/;"	p	class:zmq::message_t	access:private	signature:(const message_t&)
+message_t	zmq.hpp	/^    class message_t : private zmq_msg_t$/;"	c	namespace:zmq	inherits:zmq_msg_t
+move	zmq.hpp	/^        inline void move (message_t *msg_)$/;"	f	class:zmq::message_t	access:public	signature:(message_t *msg_)
+num	zmq.hpp	/^        int num () const$/;"	f	class:zmq::error_t	access:public	signature:() const
+operator =	zmq.hpp	/^        void operator = (const context_t&);$/;"	p	class:zmq::context_t	access:private	signature:(const context_t&)
+operator =	zmq.hpp	/^        void operator = (const message_t&);$/;"	p	class:zmq::message_t	access:private	signature:(const message_t&)
+operator =	zmq.hpp	/^        void operator = (const socket_t&);$/;"	p	class:zmq::socket_t	access:private	signature:(const socket_t&)
+operator void*	zmq.hpp	/^        inline operator void* ()$/;"	f	class:zmq::context_t	access:public	signature:()
+operator void*	zmq.hpp	/^        inline operator void* ()$/;"	f	class:zmq::socket_t	access:public	signature:()
+poll	zmq.hpp	/^    inline int poll (zmq_pollitem_t *items_, int nitems_, long timeout_ = -1)$/;"	f	namespace:zmq	signature:(zmq_pollitem_t *items_, int nitems_, long timeout_ = -1)
+pollitem_t	zmq.hpp	/^    typedef zmq_pollitem_t pollitem_t;$/;"	t	namespace:zmq
+ptr	zmq.hpp	/^        void *ptr;$/;"	m	class:zmq::context_t	access:private
+ptr	zmq.hpp	/^        void *ptr;$/;"	m	class:zmq::socket_t	access:private
+rc	zmq.hpp	/^            int rc = zmq_bind (ptr, addr_);$/;"	l
+rc	zmq.hpp	/^            int rc = zmq_close (ptr);$/;"	l
+rc	zmq.hpp	/^            int rc = zmq_connect (ptr, addr_);$/;"	l
+rc	zmq.hpp	/^            int rc = zmq_getsockopt (ptr, option_, optval_, optvallen_);$/;"	l
+rc	zmq.hpp	/^            int rc = zmq_msg_close (this);$/;"	l
+rc	zmq.hpp	/^            int rc = zmq_msg_copy (this, (zmq_msg_t*) msg_);$/;"	l
+rc	zmq.hpp	/^            int rc = zmq_msg_init (this);$/;"	l
+rc	zmq.hpp	/^            int rc = zmq_msg_init_data (this, data_, size_, ffn_, hint_);$/;"	l
+rc	zmq.hpp	/^            int rc = zmq_msg_init_size (this, size_);$/;"	l
+rc	zmq.hpp	/^            int rc = zmq_msg_move (this, (zmq_msg_t*) msg_);$/;"	l
+rc	zmq.hpp	/^            int rc = zmq_recv (ptr, msg_, flags_);$/;"	l
+rc	zmq.hpp	/^            int rc = zmq_send (ptr, &msg_, flags_);$/;"	l
+rc	zmq.hpp	/^            int rc = zmq_setsockopt (ptr, option_, optval_, optvallen_);$/;"	l
+rc	zmq.hpp	/^            int rc = zmq_term (ptr);$/;"	l
+rc	zmq.hpp	/^        int rc = zmq_device (device_, insocket_, outsocket_);$/;"	l
+rc	zmq.hpp	/^        int rc = zmq_poll (items_, nitems_, timeout_);$/;"	l
+rebuild	zmq.hpp	/^        inline void rebuild ()$/;"	f	class:zmq::message_t	access:public	signature:()
+rebuild	zmq.hpp	/^        inline void rebuild (size_t size_)$/;"	f	class:zmq::message_t	access:public	signature:(size_t size_)
+rebuild	zmq.hpp	/^        inline void rebuild (void *data_, size_t size_, free_fn *ffn_,$/;"	f	class:zmq::message_t	access:public	signature:(void *data_, size_t size_, free_fn *ffn_, void *hint_ = NULL)
+recv	zmq.hpp	/^        inline bool recv (message_t *msg_, int flags_ = 0)$/;"	f	class:zmq::socket_t	access:public	signature:(message_t *msg_, int flags_ = 0)
+revents	zmq.h	/^    short revents;$/;"	m	struct:__anon2	access:public
+send	zmq.hpp	/^        inline bool send (message_t &msg_, int flags_ = 0)$/;"	f	class:zmq::socket_t	access:public	signature:(message_t &msg_, int flags_ = 0)
+setsockopt	zmq.hpp	/^        inline void setsockopt (int option_, const void *optval_,$/;"	f	class:zmq::socket_t	access:public	signature:(int option_, const void *optval_, size_t optvallen_)
+size	zmq.hpp	/^        inline size_t size ()$/;"	f	class:zmq::message_t	access:public	signature:()
+socket	zmq.h	/^    void *socket;$/;"	m	struct:__anon2	access:public
+socket_t	zmq.hpp	/^        inline socket_t (context_t &context_, int type_)$/;"	f	class:zmq::socket_t	access:public	signature:(context_t &context_, int type_)
+socket_t	zmq.hpp	/^        socket_t (const socket_t&);$/;"	p	class:zmq::socket_t	access:private	signature:(const socket_t&)
+socket_t	zmq.hpp	/^    class socket_t$/;"	c	namespace:zmq
+version	zmq.hpp	/^    inline void version (int *major_, int *minor_, int *patch_)$/;"	f	namespace:zmq	signature:(int *major_, int *minor_, int *patch_)
+vsm_data	zmq.h	/^    unsigned char vsm_data [ZMQ_MAX_VSM_SIZE];$/;"	m	struct:__anon1	access:public
+vsm_size	zmq.h	/^    unsigned char vsm_size;$/;"	m	struct:__anon1	access:public
+what	zmq.hpp	/^        virtual const char *what () const throw ()$/;"	f	class:zmq::error_t	access:public	signature:() const
+zmq	zmq.hpp	/^namespace zmq$/;"	n
+zmq::context_t	zmq.hpp	/^    class context_t$/;"	c	namespace:zmq
+zmq::context_t::context_t	zmq.hpp	/^        context_t (const context_t&);$/;"	p	class:zmq::context_t	access:private	signature:(const context_t&)
+zmq::context_t::context_t	zmq.hpp	/^        inline context_t (int io_threads_)$/;"	f	class:zmq::context_t	access:public	signature:(int io_threads_)
+zmq::context_t::operator =	zmq.hpp	/^        void operator = (const context_t&);$/;"	p	class:zmq::context_t	access:private	signature:(const context_t&)
+zmq::context_t::operator void*	zmq.hpp	/^        inline operator void* ()$/;"	f	class:zmq::context_t	access:public	signature:()
+zmq::context_t::ptr	zmq.hpp	/^        void *ptr;$/;"	m	class:zmq::context_t	access:private
+zmq::context_t::rc	zmq.hpp	/^            int rc = zmq_term (ptr);$/;"	l
+zmq::context_t::~context_t	zmq.hpp	/^        inline ~context_t ()$/;"	f	class:zmq::context_t	access:public	signature:()
+zmq::device	zmq.hpp	/^    inline void device (int device_, void * insocket_, void* outsocket_)$/;"	f	namespace:zmq	signature:(int device_, void * insocket_, void* outsocket_)
+zmq::error_t	zmq.hpp	/^    class error_t : public std::exception$/;"	c	namespace:zmq	inherits:std::exception
+zmq::error_t::errnum	zmq.hpp	/^        int errnum;$/;"	m	class:zmq::error_t	access:private
+zmq::error_t::error_t	zmq.hpp	/^        error_t () : errnum (zmq_errno ()) {}$/;"	f	class:zmq::error_t	access:public	signature:()
+zmq::error_t::num	zmq.hpp	/^        int num () const$/;"	f	class:zmq::error_t	access:public	signature:() const
+zmq::error_t::what	zmq.hpp	/^        virtual const char *what () const throw ()$/;"	f	class:zmq::error_t	access:public	signature:() const
+zmq::free_fn	zmq.hpp	/^    typedef zmq_free_fn free_fn;$/;"	t	namespace:zmq
+zmq::message_t	zmq.hpp	/^    class message_t : private zmq_msg_t$/;"	c	namespace:zmq	inherits:zmq_msg_t
+zmq::message_t::copy	zmq.hpp	/^        inline void copy (message_t *msg_)$/;"	f	class:zmq::message_t	access:public	signature:(message_t *msg_)
+zmq::message_t::data	zmq.hpp	/^        inline void *data ()$/;"	f	class:zmq::message_t	access:public	signature:()
+zmq::message_t::message_t	zmq.hpp	/^        inline message_t ()$/;"	f	class:zmq::message_t	access:public	signature:()
+zmq::message_t::message_t	zmq.hpp	/^        inline message_t (size_t size_)$/;"	f	class:zmq::message_t	access:public	signature:(size_t size_)
+zmq::message_t::message_t	zmq.hpp	/^        inline message_t (void *data_, size_t size_, free_fn *ffn_,$/;"	f	class:zmq::message_t	access:public	signature:(void *data_, size_t size_, free_fn *ffn_, void *hint_ = NULL)
+zmq::message_t::message_t	zmq.hpp	/^        message_t (const message_t&);$/;"	p	class:zmq::message_t	access:private	signature:(const message_t&)
+zmq::message_t::move	zmq.hpp	/^        inline void move (message_t *msg_)$/;"	f	class:zmq::message_t	access:public	signature:(message_t *msg_)
+zmq::message_t::operator =	zmq.hpp	/^        void operator = (const message_t&);$/;"	p	class:zmq::message_t	access:private	signature:(const message_t&)
+zmq::message_t::rc	zmq.hpp	/^            int rc = zmq_msg_close (this);$/;"	l
+zmq::message_t::rc	zmq.hpp	/^            int rc = zmq_msg_copy (this, (zmq_msg_t*) msg_);$/;"	l
+zmq::message_t::rc	zmq.hpp	/^            int rc = zmq_msg_init (this);$/;"	l
+zmq::message_t::rc	zmq.hpp	/^            int rc = zmq_msg_init_data (this, data_, size_, ffn_, hint_);$/;"	l
+zmq::message_t::rc	zmq.hpp	/^            int rc = zmq_msg_init_size (this, size_);$/;"	l
+zmq::message_t::rc	zmq.hpp	/^            int rc = zmq_msg_move (this, (zmq_msg_t*) msg_);$/;"	l
+zmq::message_t::rebuild	zmq.hpp	/^        inline void rebuild ()$/;"	f	class:zmq::message_t	access:public	signature:()
+zmq::message_t::rebuild	zmq.hpp	/^        inline void rebuild (size_t size_)$/;"	f	class:zmq::message_t	access:public	signature:(size_t size_)
+zmq::message_t::rebuild	zmq.hpp	/^        inline void rebuild (void *data_, size_t size_, free_fn *ffn_,$/;"	f	class:zmq::message_t	access:public	signature:(void *data_, size_t size_, free_fn *ffn_, void *hint_ = NULL)
+zmq::message_t::size	zmq.hpp	/^        inline size_t size ()$/;"	f	class:zmq::message_t	access:public	signature:()
+zmq::message_t::~message_t	zmq.hpp	/^        inline ~message_t ()$/;"	f	class:zmq::message_t	access:public	signature:()
+zmq::poll	zmq.hpp	/^    inline int poll (zmq_pollitem_t *items_, int nitems_, long timeout_ = -1)$/;"	f	namespace:zmq	signature:(zmq_pollitem_t *items_, int nitems_, long timeout_ = -1)
+zmq::pollitem_t	zmq.hpp	/^    typedef zmq_pollitem_t pollitem_t;$/;"	t	namespace:zmq
+zmq::rc	zmq.hpp	/^        int rc = zmq_device (device_, insocket_, outsocket_);$/;"	l
+zmq::rc	zmq.hpp	/^        int rc = zmq_poll (items_, nitems_, timeout_);$/;"	l
+zmq::socket_t	zmq.hpp	/^    class socket_t$/;"	c	namespace:zmq
+zmq::socket_t::bind	zmq.hpp	/^        inline void bind (const char *addr_)$/;"	f	class:zmq::socket_t	access:public	signature:(const char *addr_)
+zmq::socket_t::close	zmq.hpp	/^        inline void close()$/;"	f	class:zmq::socket_t	access:public	signature:()
+zmq::socket_t::connect	zmq.hpp	/^        inline void connect (const char *addr_)$/;"	f	class:zmq::socket_t	access:public	signature:(const char *addr_)
+zmq::socket_t::getsockopt	zmq.hpp	/^        inline void getsockopt (int option_, void *optval_,$/;"	f	class:zmq::socket_t	access:public	signature:(int option_, void *optval_, size_t *optvallen_)
+zmq::socket_t::operator =	zmq.hpp	/^        void operator = (const socket_t&);$/;"	p	class:zmq::socket_t	access:private	signature:(const socket_t&)
+zmq::socket_t::operator void*	zmq.hpp	/^        inline operator void* ()$/;"	f	class:zmq::socket_t	access:public	signature:()
+zmq::socket_t::ptr	zmq.hpp	/^        void *ptr;$/;"	m	class:zmq::socket_t	access:private
+zmq::socket_t::rc	zmq.hpp	/^            int rc = zmq_bind (ptr, addr_);$/;"	l
+zmq::socket_t::rc	zmq.hpp	/^            int rc = zmq_close (ptr);$/;"	l
+zmq::socket_t::rc	zmq.hpp	/^            int rc = zmq_connect (ptr, addr_);$/;"	l
+zmq::socket_t::rc	zmq.hpp	/^            int rc = zmq_getsockopt (ptr, option_, optval_, optvallen_);$/;"	l
+zmq::socket_t::rc	zmq.hpp	/^            int rc = zmq_recv (ptr, msg_, flags_);$/;"	l
+zmq::socket_t::rc	zmq.hpp	/^            int rc = zmq_send (ptr, &msg_, flags_);$/;"	l
+zmq::socket_t::rc	zmq.hpp	/^            int rc = zmq_setsockopt (ptr, option_, optval_, optvallen_);$/;"	l
+zmq::socket_t::recv	zmq.hpp	/^        inline bool recv (message_t *msg_, int flags_ = 0)$/;"	f	class:zmq::socket_t	access:public	signature:(message_t *msg_, int flags_ = 0)
+zmq::socket_t::send	zmq.hpp	/^        inline bool send (message_t &msg_, int flags_ = 0)$/;"	f	class:zmq::socket_t	access:public	signature:(message_t &msg_, int flags_ = 0)
+zmq::socket_t::setsockopt	zmq.hpp	/^        inline void setsockopt (int option_, const void *optval_,$/;"	f	class:zmq::socket_t	access:public	signature:(int option_, const void *optval_, size_t optvallen_)
+zmq::socket_t::socket_t	zmq.hpp	/^        inline socket_t (context_t &context_, int type_)$/;"	f	class:zmq::socket_t	access:public	signature:(context_t &context_, int type_)
+zmq::socket_t::socket_t	zmq.hpp	/^        socket_t (const socket_t&);$/;"	p	class:zmq::socket_t	access:private	signature:(const socket_t&)
+zmq::socket_t::~socket_t	zmq.hpp	/^        inline ~socket_t ()$/;"	f	class:zmq::socket_t	access:public	signature:()
+zmq::version	zmq.hpp	/^    inline void version (int *major_, int *minor_, int *patch_)$/;"	f	namespace:zmq	signature:(int *major_, int *minor_, int *patch_)
+zmq_bind	zmq.h	/^ZMQ_EXPORT int zmq_bind (void *s, const char *addr);$/;"	p	signature:(void *s, const char *addr)
+zmq_close	zmq.h	/^ZMQ_EXPORT int zmq_close (void *s);$/;"	p	signature:(void *s)
+zmq_connect	zmq.h	/^ZMQ_EXPORT int zmq_connect (void *s, const char *addr);$/;"	p	signature:(void *s, const char *addr)
+zmq_device	zmq.h	/^ZMQ_EXPORT int zmq_device (int device, void * insocket, void* outsocket);$/;"	p	signature:(int device, void * insocket, void* outsocket)
+zmq_errno	zmq.h	/^ZMQ_EXPORT int zmq_errno (void);$/;"	p	signature:(void)
+zmq_free_fn	zmq.h	/^typedef void (zmq_free_fn) (void *data, void *hint);$/;"	t
+zmq_getsockopt	zmq.h	/^ZMQ_EXPORT int zmq_getsockopt (void *s, int option, void *optval,$/;"	p	signature:(void *s, int option, void *optval, size_t *optvallen)
+zmq_init	zmq.h	/^ZMQ_EXPORT void *zmq_init (int io_threads);$/;"	p	signature:(int io_threads)
+zmq_msg_close	zmq.h	/^ZMQ_EXPORT int zmq_msg_close (zmq_msg_t *msg);$/;"	p	signature:(zmq_msg_t *msg)
+zmq_msg_copy	zmq.h	/^ZMQ_EXPORT int zmq_msg_copy (zmq_msg_t *dest, zmq_msg_t *src);$/;"	p	signature:(zmq_msg_t *dest, zmq_msg_t *src)
+zmq_msg_data	zmq.h	/^ZMQ_EXPORT void *zmq_msg_data (zmq_msg_t *msg);$/;"	p	signature:(zmq_msg_t *msg)
+zmq_msg_init	zmq.h	/^ZMQ_EXPORT int zmq_msg_init (zmq_msg_t *msg);$/;"	p	signature:(zmq_msg_t *msg)
+zmq_msg_init_data	zmq.h	/^ZMQ_EXPORT int zmq_msg_init_data (zmq_msg_t *msg, void *data,$/;"	p	signature:(zmq_msg_t *msg, void *data, size_t size, zmq_free_fn *ffn, void *hint)
+zmq_msg_init_size	zmq.h	/^ZMQ_EXPORT int zmq_msg_init_size (zmq_msg_t *msg, size_t size);$/;"	p	signature:(zmq_msg_t *msg, size_t size)
+zmq_msg_move	zmq.h	/^ZMQ_EXPORT int zmq_msg_move (zmq_msg_t *dest, zmq_msg_t *src);$/;"	p	signature:(zmq_msg_t *dest, zmq_msg_t *src)
+zmq_msg_size	zmq.h	/^ZMQ_EXPORT size_t zmq_msg_size (zmq_msg_t *msg);$/;"	p	signature:(zmq_msg_t *msg)
+zmq_msg_t	zmq.h	/^} zmq_msg_t;$/;"	t	typeref:struct:__anon1
+zmq_poll	zmq.h	/^ZMQ_EXPORT int zmq_poll (zmq_pollitem_t *items, int nitems, long timeout);$/;"	p	signature:(zmq_pollitem_t *items, int nitems, long timeout)
+zmq_pollitem_t	zmq.h	/^} zmq_pollitem_t;$/;"	t	typeref:struct:__anon2
+zmq_recv	zmq.h	/^ZMQ_EXPORT int zmq_recv (void *s, zmq_msg_t *msg, int flags);$/;"	p	signature:(void *s, zmq_msg_t *msg, int flags)
+zmq_send	zmq.h	/^ZMQ_EXPORT int zmq_send (void *s, zmq_msg_t *msg, int flags);$/;"	p	signature:(void *s, zmq_msg_t *msg, int flags)
+zmq_setsockopt	zmq.h	/^ZMQ_EXPORT int zmq_setsockopt (void *s, int option, const void *optval,$/;"	p	signature:(void *s, int option, const void *optval, size_t optvallen)
+zmq_sleep	zmq_utils.h	/^ZMQ_EXPORT void zmq_sleep (int seconds_);$/;"	p	signature:(int seconds_)
+zmq_socket	zmq.h	/^ZMQ_EXPORT void *zmq_socket (void *context, int type);$/;"	p	signature:(void *context, int type)
+zmq_stopwatch_start	zmq_utils.h	/^ZMQ_EXPORT void *zmq_stopwatch_start (void);$/;"	p	signature:(void)
+zmq_stopwatch_stop	zmq_utils.h	/^ZMQ_EXPORT unsigned long zmq_stopwatch_stop (void *watch_);$/;"	p	signature:(void *watch_)
+zmq_strerror	zmq.h	/^ZMQ_EXPORT const char *zmq_strerror (int errnum);$/;"	p	signature:(int errnum)
+zmq_term	zmq.h	/^ZMQ_EXPORT int zmq_term (void *context);$/;"	p	signature:(void *context)
+zmq_version	zmq.h	/^ZMQ_EXPORT void zmq_version (int *major, int *minor, int *patch);$/;"	p	signature:(int *major, int *minor, int *patch)
+~context_t	zmq.hpp	/^        inline ~context_t ()$/;"	f	class:zmq::context_t	access:public	signature:()
+~message_t	zmq.hpp	/^        inline ~message_t ()$/;"	f	class:zmq::message_t	access:public	signature:()
+~socket_t	zmq.hpp	/^        inline ~socket_t ()$/;"	f	class:zmq::socket_t	access:public	signature:()

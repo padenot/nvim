@@ -16,10 +16,6 @@ backup_old()
 
 backup_old
 
-# vim version
-[ -z $(vim --version | grep -o 7.3) ] && echo "You need ViM 7.3." && exit 1 
-echo "ViM version OK."
-
 # font
 locate $font && "DroidSansMono.ttf found." || install_font
 
@@ -27,7 +23,9 @@ locate $font && "DroidSansMono.ttf found." || install_font
 ctags && echo "ctags found" || sudo apt-get -y install ctags
 
 # fetch config
-cd ~ && git clone git://github.com/padenot/.vim && echo "Clone OK"
+cd ~ && git clone git://github.com/padenot/.vim/ && echo "Clone OK"
+
+cd .vim && git pull origin 7.2
 
 # symlink .vimrc
 ln -s ~/.vim/vimrc ~/.vimrc

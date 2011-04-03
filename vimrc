@@ -62,8 +62,6 @@ set guioptions+=ic
 set guioptions-=b
 " Copy visual area to paste buffer
 set go+=a
-" Press F4 to (silently) turn off highlighting and clear any message already displayed.
-map <silent> <F4> :silent noh<CR>
 " Allow backspace in insert mode like in any other text editor
 set backspace=indent,eol,start 
 " Set the dictionnary to french
@@ -111,6 +109,7 @@ au FileType make set noexpandtab
 " configure tags - add additional tags here or comment out not-used ones
 set tags+=~/.vim/tags/cpp
 set tags+=~/.vim/tags/sqlite3
+set tags+=~/.vim/tags/zmq
 " ctrl+F12 builds tags for the current project.
 map <C-F12> :!ctags -R --sort=yes --c++-kinds=+lp --fields=+iaS --extra=+q .<CR>
 
@@ -151,9 +150,6 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#222222
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#333333
 let g:indent_guides_guide_size = 2
 
-" F5 toogles to Gundo panel
-nnoremap <F5> :GundoToggle<CR>
-
 " Tag list toggle
 noremap <F7> :TlistToggle<CR>
 
@@ -180,3 +176,6 @@ au FileType html let b:delimitMate_matchpairs = "(:),[:],{:},<:>"
 let protodefprotogetter = "~/.vim/pullproto.pl"
 
 au! BufEnter *.cpp let b:fswitchdst = 'hpp,h' | let b:fswitchlocs = '.'
+
+" Press F4 to (silently) turn off highlighting and clear any message already displayed.
+nmap <silent> <F4> :noh<CR>
