@@ -176,3 +176,7 @@ map <Leader>t :silent :FufCoverageFile <CR><Esc>
 
 let delimitMate_matchpairs = "(:),[:],{:}"
 au FileType html let b:delimitMate_matchpairs = "(:),[:],{:},<:>"
+
+let protodefprotogetter = "~/.vim/pullproto.pl"
+
+au! BufEnter *.cpp let b:fswitchdst = 'hpp,h' | let b:fswitchlocs = '.'
