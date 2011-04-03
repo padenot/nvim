@@ -7,9 +7,10 @@ Paste this into a terminal :
 wget --no-check-certificate https://github.com/padenot/.vim/raw/master/bootstrap.sh -O - | sh
 ``
 
-## Longer version & manual install
 This will download the config files, and make sure that dependancies are
 satisfied (mainly ctags and DroidSansMono.ttf font).
+
+## Longer version & manual install
 
 This is my ViM configuration, containing all my plugins, and my .vimrc file.
 It requires ViM 7.3 for the Gundo plugin to work. ViM has to be compiled with
