@@ -4,6 +4,7 @@ font="DroidSansMono.ttf"
 
 install_font()
 {
+  mkdir -p ~/.fonts/
   wget paul.cx/$font -O ~/.fonts/$font
 }
 
