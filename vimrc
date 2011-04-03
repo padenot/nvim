@@ -172,3 +172,7 @@ noremap <C-J> :silent :tabprev<CR><Esc>
 noremap <C-K> :silent :tabnext<CR><Esc>
 
 map <Leader>t :silent :FufCoverageFile <CR><Esc>
+
+
+let delimitMate_matchpairs = "(:),[:],{:}"
+au FileType html let b:delimitMate_matchpairs = "(:),[:],{:},<:>"
