@@ -23,7 +23,7 @@ locate $font && "DroidSansMono.ttf found." || install_font
 ctags && echo "ctags found" || sudo apt-get -y install ctags
 
 # fetch config
-cd ~ && git clone git://github.com/padenot/.vim/ && echo "Clone OK"
+cd ~ && git clone git://github.com/padenot/.vim.git && echo "Clone OK"
 
 cd .vim && git pull origin 7.2
 

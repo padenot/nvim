@@ -1,19 +1,25 @@
-# Paul's .vim directory
+# Paul's .vim directory (ViM 7.2 version)
 
 ## tl;dr 
+You have ViM 7.2 and don't want to update. Okay boy, this ViM config has a
+specially cooked version to cope with your lack of modernity.
+
 Paste this into a terminal :
 
 ``
-wget --no-check-certificate https://github.com/padenot/.vim/raw/master/bootstrap.sh -O - | sh
+wget --no-check-certificate https://github.com/padenot/.vim/raw/7.2/bootstrap.sh -O - | sh
 ``
 
 This will download the config files, and make sure that dependancies are
 satisfied (mainly ctags and DroidSansMono.ttf font).
 
+The only thing you'll miss (compared to the normal version) is the Gundo plugin,
+which shows a fine undo tree will pressing the F5 key.
+
 ## Longer version & manual install
 
 This is my ViM configuration, containing all my plugins, and my .vimrc file.
-It requires ViM 7.3 for the Gundo plugin to work. ViM has to be compiled with
+It requires ViM 7.2. ViM has to be compiled with
 support for python scripting, and shall link against the same libraries
 that it has been compiled to (use the  ``ldd`` command for troubleshooting).
 
@@ -33,10 +39,6 @@ You should simlink the vimrc file to ~/.vimrc, for this configuration to work.
 F4
 
 > Remove search highlighting
-
-F5
-
-> Gundo panel toggle
 
 F7
 
