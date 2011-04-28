@@ -8,7 +8,8 @@ wget --no-check-certificate https://github.com/padenot/.vim/raw/master/bootstrap
 ``
 
 This will download the config files, and make sure that dependancies are
-satisfied (mainly ctags and DroidSansMono.ttf font).
+satisfied (mainly ctags and DroidSansMono.ttf font as well as ViM 7.3. If you
+use 7.2 and don't want to / can't upgrade, try the 7.2 branch of this repository).
 
 ## Longer version & manual install
 
