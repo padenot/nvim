@@ -39,9 +39,9 @@ F5
 
 > Gundo panel toggle
 
-F7
+F6
 
-> Tag panel toggle
+> Tagbar panel toggle
 
 ctrl+F12
 
