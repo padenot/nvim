@@ -48,6 +48,7 @@ set softtabstop=2
 set tabstop=2
 set expandtab 
 " Case sensitive seach if a capital is used in the search pattern
+set ignorecase
 set smartcase
 " Font in GUI mode.
 "set guifont=Monospace\ 8
@@ -62,8 +63,6 @@ set guioptions+=ic
 set guioptions-=b
 " Copy visual area to paste buffer
 set go+=a
-" Press F4 to (silently) turn off highlighting and clear any message already displayed.
-noremap <silent> <F4> :noh<CR>
 " Allow backspace in insert mode like in any other text editor
 set backspace=indent,eol,start 
 " Set the dictionnary to french
@@ -98,19 +97,25 @@ augroup filetypedetect
 	au BufNewFile,BufRead *.rst setlocal spell spelllang=fr
 augroup END
 
+set undodir=~/.vim/undodir
+set undofile
+set undolevels=1000 "maximum number of changes that can be undone
+set undoreload=10000 "maximum number lines to save for undo on a buffer reload"
+
 " SConscript & SConstruct are python
 au BufRead,BufNewFile {SConscript,SConstruct}  set ft=python
 " .rl (ragel parsing file) should be highlighted as C
 au BufRead,BufNewFile {*.rl} set ft=c
 " .ipdl (inte-process-definition-language) should be highlighted as C++
 au BufRead,BufNewFile {*.ipdl} set ft=cpp
+" highlight .sjs (server side js) as javacript
+au BufRead,BufNewFile {*.sjs} set ft=javascript
 " Respect PEP8 while editing python
 au FileType python  set tabstop=4 textwidth=79
 " When using make, we shouldn't expand tabs.
 au FileType make set noexpandtab
 
 """ Omnicpp
-" configure tags - add additional tags here or comment out not-used ones
 set tags+=~/.vim/tags/cpp
 set tags+=~/.vim/tags/sqlite3
 " ctrl+F12 builds tags for the current project.
@@ -147,11 +152,13 @@ if exists(":Tabularize")
 endif
 
 " Indent guide configuration
-autocmd FileType * IndentGuidesEnable
-let g:indent_guides_auto_colors = 1
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#222222
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#333333
-let g:indent_guides_guide_size = 2
+"if exists("*IndentGuidesEnable")
+  autocmd FileType * IndentGuidesEnable
+  let g:indent_guides_auto_colors = 1
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#222222
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#333333
+  let g:indent_guides_guide_size = 2
+"endif
 
 " F5 toogles to Gundo panel
 nnoremap <F5> :GundoToggle<CR>
@@ -183,3 +190,7 @@ au FileType html let b:delimitMate_matchpairs = "(:),[:],{:},<:>"
 let protodefprotogetter = "~/.vim/pullproto.pl"
 
 au! BufEnter *.cpp let b:fswitchdst = 'hpp,h' | let b:fswitchlocs = '.'
+
+" Press F4 to  turn off highlighting and clear any message already displayed.
+map <F4> :noh<CR>
+set pastetoggle=<F3>

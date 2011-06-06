@@ -3,3 +3,4 @@ tags/cpp_src
 *.o
 *.so
 .netrwhist
+undodir/*
