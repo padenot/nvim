@@ -62,8 +62,6 @@ set guioptions+=ic
 set guioptions-=b
 " Copy visual area to paste buffer
 set go+=a
-" Press F4 to (silently) turn off highlighting and clear any message already displayed.
-noremap <silent> <F4> :noh<CR>
 " Allow backspace in insert mode like in any other text editor
 set backspace=indent,eol,start 
 " Set the dictionnary to french
@@ -183,3 +181,6 @@ au FileType html let b:delimitMate_matchpairs = "(:),[:],{:},<:>"
 let protodefprotogetter = "~/.vim/pullproto.pl"
 
 au! BufEnter *.cpp let b:fswitchdst = 'hpp,h' | let b:fswitchlocs = '.'
+
+" Press F4 to  turn off highlighting and clear any message already displayed.
+map <F4> :noh<CR>
