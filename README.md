@@ -11,7 +11,8 @@ wget --no-check-certificate https://github.com/padenot/.vim/raw/7.2/bootstrap.sh
 ``
 
 This will download the config files, and make sure that dependancies are
-satisfied (mainly ctags and DroidSansMono.ttf font).
+satisfied (mainly ctags and DroidSansMono.ttf font as well as ViM 7.3. If you
+use 7.2 and don't want to / can't upgrade, try the 7.2 branch of this repository).
 
 The only thing you'll miss (compared to the normal version) is the Gundo plugin,
 which shows a fine undo tree will pressing the F5 key.
@@ -40,9 +41,9 @@ F4
 
 > Remove search highlighting
 
-F7
+F6
 
-> Tag panel toggle
+> Tagbar panel toggle
 
 ctrl+F12
 

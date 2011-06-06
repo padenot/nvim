@@ -100,6 +100,8 @@ augroup END
 au BufRead,BufNewFile {SConscript,SConstruct}  set ft=python
 " .rl (ragel parsing file) should be highlighted as C
 au BufRead,BufNewFile {*.rl} set ft=c
+" .ipdl (inte-process-definition-language) should be highlighted as C++
+au BufRead,BufNewFile {*.ipdl} set ft=cpp
 " Respect PEP8 while editing python
 au FileType python  set tabstop=4 textwidth=79
 " When using make, we shouldn't expand tabs.
@@ -151,7 +153,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#333333
 let g:indent_guides_guide_size = 2
 
 " Tag list toggle
-noremap <F7> :TlistToggle<CR>
+noremap <F6> :TagbarToggle<CR>
 
 " Control tab switches between cpp an .h file, as in Eclipse
 map <C-Tab> :A<CR><Esc>
@@ -167,6 +169,7 @@ noremap <right> <nop>
 noremap <C-J> :silent :tabprev<CR><Esc>
 noremap <C-K> :silent :tabnext<CR><Esc>
 
+
 map <Leader>t :silent :FufCoverageFile <CR><Esc>
 
 
@@ -177,5 +180,5 @@ let protodefprotogetter = "~/.vim/pullproto.pl"
 
 au! BufEnter *.cpp let b:fswitchdst = 'hpp,h' | let b:fswitchlocs = '.'
 
-" Press F4 to (silently) turn off highlighting and clear any message already displayed.
-nmap <silent> <F4> :noh<CR>
+" Press F4 to  turn off highlighting and clear any message already displayed.
+map <F4> :noh<CR>
