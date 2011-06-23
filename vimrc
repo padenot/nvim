@@ -16,7 +16,12 @@ let c_comment_strings=1
 " Enable syntax highlighting
 syntax on
 " Color scheme.
-color slate
+set background=dark
+if has("gui_running")
+  colorscheme solarized
+else
+  color slate
+endif
 " Highlight matched pattern when searching or replacing.
 set hlsearch
 " Show the line numbers.
@@ -85,6 +90,7 @@ set makeprg=scons\ -u\ \.
 au GUIEnter * set lines=73 columns=84
 " Set nocompatible
 set nocp
+set ttyfast
 
 """ File type specific
 filetype indent on
