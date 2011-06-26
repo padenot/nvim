@@ -75,9 +75,25 @@ set dictionary+="/usr/share/dict/french"
 " Set the Doxygen style comments, to ease the writing of documentation
 set comments=s1:/**,mb:*,ex:*/
 " We will almost never open .o in vim, so remove them from matching
-set wildignore+=*.o,*.obj,.git,*.swp,*.svn
+set wildignore+=*.o,*.obj,.git,*.swp,*.svn,*.pyc
 " Add · for trailing spaces.
 set list listchars=tab:\ \ ,trail:·
+set lazyredraw
+set nostartofline
+set modeline
+set scroll=5
+set scrolloff=5
+set sidescrolloff=5
+set sidescroll=1
+set viminfo='10,:20,\"100,%,n~/.viminfo
+set history=1000
+set nobackup
+set nowritebackup
+set noswapfile
+if has("persistend_undo")
+  set undofile
+  set undodir=~/.vim/undodir
+endif
 
 " Status bar
 set statusline=%F%m%r%h%w\ %04v
@@ -103,10 +119,6 @@ augroup filetypedetect
 	au BufNewFile,BufRead *.rst setlocal spell spelllang=fr
 augroup END
 
-set undodir=~/.vim/undodir
-set undofile
-set undolevels=1000 "maximum number of changes that can be undone
-set undoreload=10000 "maximum number lines to save for undo on a buffer reload"
 
 " SConscript & SConstruct are python
 au BufRead,BufNewFile {SConscript,SConstruct}  set ft=python
@@ -200,3 +212,17 @@ au! BufEnter *.cpp let b:fswitchdst = 'hpp,h' | let b:fswitchlocs = '.'
 " Press F4 to  turn off highlighting and clear any message already displayed.
 map <F4> :noh<CR>
 set pastetoggle=<F3>
+
+let g:mqStatusPath = getcwd() . "/.hg/patches/status"
+
+function! GetCurrentMqPatch()
+    if filereadable(g:mqStatusPath)
+      let patchesList = readfile(g:mqStatusPath)
+      if len(patchesList) > 0
+        return split(patchesList[-1], ':')[1]
+      endif
+      return ""
+    endif
+endfunction
+
+set statusline=%{GetCurrentMqPatch()}\ %F%m%r%h%w
