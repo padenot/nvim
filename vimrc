@@ -48,10 +48,9 @@ set linebreak
 " Match pairs of symbols
 set matchpairs+=<:>":"`:`
 " Size of tabulatons
-set shiftwidth=2
-set softtabstop=2
+set expandtab
 set tabstop=2
-set expandtab 
+set shiftwidth=2
 " Case sensitive seach if a capital is used in the search pattern
 set ignorecase
 set smartcase
@@ -113,10 +112,8 @@ filetype indent on
 filetype plugin on
 " Enable spelling check on .tex and .latex files, as well as rst files
 augroup filetypedetect
-	au BufNewFile,BufRead *.latex setlocal spell spelllang=fr
 	au BufNewFile,BufRead *.tex setlocal spell spelllang=fr
 	au BufNewFile,BufRead *.rst set syntax=rest
-	au BufNewFile,BufRead *.rst setlocal spell spelllang=fr
 augroup END
 
 
@@ -173,9 +170,7 @@ endif
 "if exists("*IndentGuidesEnable")
   autocmd FileType * IndentGuidesEnable
   let g:indent_guides_auto_colors = 1
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#222222
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#333333
-  let g:indent_guides_guide_size = 2
+  let g:indent_guides_guide_size = 4
 "endif
 
 " F5 toogles to Gundo panel
@@ -221,8 +216,53 @@ function! GetCurrentMqPatch()
       if len(patchesList) > 0
         return split(patchesList[-1], ':')[1]
       endif
-      return ""
     endif
+    return ""
 endfunction
 
-set statusline=%{GetCurrentMqPatch()}\ %F%m%r%h%w
+"set statusline=%{GetCurrentMqPatch()}\ %F%m%r%h%w
+
+function! MyStatusLine(mode)
+    let statusline=""
+
+    if filereadable(g:mqStatusPath)
+      let statusline .= "%#PatchColor#" . GetCurrentMqPatch() . "%*"
+    endif
+
+    if a:mode == 'Enter'
+        let statusline.="%#StatColor#"
+    endif
+    let statusline.="\(%n\)\ %f\ "
+    if a:mode == 'Enter'
+        let statusline.="%*"
+    endif
+    let statusline.="%#Modified#%m"
+    if a:mode == 'Leave'
+        let statusline.="%*%r"
+    elseif a:mode == 'Enter'
+        let statusline.="%r%*"
+    endif
+    let statusline .= "\ (%l/%L,\ %c)\ %P%=%h%w\ %y\ [%{&encoding}:%{&fileformat}]\ \ "
+    return statusline
+endfunction
+
+au WinEnter * setlocal statusline=%!MyStatusLine('Enter')
+au WinLeave * setlocal statusline=%!MyStatusLine('Leave')
+set statusline=%!MyStatusLine('Enter')
+
+function! InsertStatuslineColor(mode)
+  if a:mode == 'i'
+    hi StatColor guibg=orange ctermbg=lightred
+  elseif a:mode == 'r'
+    hi StatColor guibg=#e454ba ctermbg=magenta
+  elseif a:mode == 'v'
+    hi StatColor guibg=#e454ba ctermbg=magenta
+  else
+    hi StatColor guibg=red ctermbg=red
+  endif
+endfunction 
+
+au InsertEnter * call InsertStatuslineColor(v:insertmode)
+au InsertLeave * hi StatColor guibg=#95e454 guifg=black ctermbg=lightgreen ctermfg=black
+
+imap <C-r>u <C-R>=system('~/bin/uuidgen.py')<cr>
