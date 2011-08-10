@@ -7,8 +7,12 @@
 "
 " Paul ADENOT -- 2011
 "
+call pathogen#infect()
 
 """ Standard ViM options
+" Set nocompatible
+set nocp
+set ttyfast
 " , is a nice leader key
 let mapleader = ","
 " highlight words and numbers inside a comment
@@ -47,16 +51,15 @@ set wrapscan
 set linebreak
 " Match pairs of symbols
 set matchpairs+=<:>":"`:`
-" Size of tabulatons
+" Size of tabulatons, which are in fact spaces
 set expandtab
 set tabstop=2
 set shiftwidth=2
 " Case sensitive seach if a capital is used in the search pattern
 set ignorecase
 set smartcase
-" Font in GUI mode.
-"set guifont=Monospace\ 8
-set guifont=Droid\ Sans\ Mono\ 8
+" Font in GUI mode : https://github.com/andreberg/Meslo-Font
+set guifont=Meslo\ LG\ S\ DZ\ 8
 " remove the useless buttons from gvim
 set guioptions=nomenu
 " Remove menubar
@@ -78,6 +81,7 @@ set wildignore+=*.o,*.obj,.git,*.swp,*.svn,*.pyc
 " Add · for trailing spaces.
 set list listchars=tab:\ \ ,trail:·
 set lazyredraw
+" Don't go to the start of line when using C-D and such
 set nostartofline
 set modeline
 set scroll=5
@@ -85,35 +89,33 @@ set scrolloff=5
 set sidescrolloff=5
 set sidescroll=1
 set viminfo='10,:20,\"100,%,n~/.viminfo
+" After opening a file, put the cursor when it was last time this file was
+" edited.
+autocmd BufReadPost * normal `"
 set history=1000
 set nobackup
 set nowritebackup
 set noswapfile
-if has("persistend_undo")
-  set undofile
-  set undodir=~/.vim/undodir
-endif
+set undofile
+set undodir=~/.vim/undodir
 
-" Status bar
-set statusline=%F%m%r%h%w\ %04v
-set laststatus=2 
+set foldmethod=indent
+map <Tab> za
+au BufReadPost * normal zR
 
 " SCons support
 set makeprg=scons\ -u\ \.
 
 " Set the GUI Size to one screen
 au GUIEnter * set lines=73 columns=84
-" Set nocompatible
-set nocp
-set ttyfast
 
 """ File type specific
 filetype indent on
 filetype plugin on
 " Enable spelling check on .tex and .latex files, as well as rst files
 augroup filetypedetect
-	au BufNewFile,BufRead *.tex setlocal spell spelllang=fr
-	au BufNewFile,BufRead *.rst set syntax=rest
+  au BufNewFile,BufRead *.tex setlocal spell spelllang=fr
+  au BufNewFile,BufRead *.rst set syntax=rest
 augroup END
 
 
@@ -166,12 +168,10 @@ if exists(":Tabularize")
     noremap <Leader>z| :Tabularize /|<CR>
 endif
 
-" Indent guide configuration
-"if exists("*IndentGuidesEnable")
-  autocmd FileType * IndentGuidesEnable
-  let g:indent_guides_auto_colors = 1
-  let g:indent_guides_guide_size = 4
-"endif
+"Indent guide configuration
+autocmd FileType * IndentGuidesEnable
+let g:indent_guides_auto_colors = 1
+let g:indent_guides_guide_size = 4
 
 " F5 toogles to Gundo panel
 nnoremap <F5> :GundoToggle<CR>
@@ -180,20 +180,36 @@ nnoremap <F5> :GundoToggle<CR>
 noremap <F6> :TagbarToggle<CR>
 
 " Control tab switches between cpp an .h file, as in Eclipse
-map <C-Tab> :A<CR><Esc>
+"let b:fsnonewfile = "on"
+"au! BufEnter *.h,*.hpp b:fswitchdst = 'cpp,c'
+"let b:fswitchlocs = 'reg:/include/src/,reg:/include.*/src/,../src'
+"au! BufEnter *.cpp,*.c let b:fswitchdst = 'hpp,h' 
+"let b:fswitchlocs = '.,../public'
+map <C-Tab> :FSHere<CR><Esc>
+
+augroup mycppfiles
+  au!
+  au BufRead *.cpp let b:fswitchlocs = '.,../public/'
+  au BufRead *.cpp let b:fswitchdst = "h"
+  au BufRead *.h let b:fswitchdst  = 'cpp,cc,C'
+  au BufRead *.h let b:fswitchlocs = '.,../src/'
+augroup END
+
 
 " Type :w!! when forgot sudo and editing a file.
 cmap w!! w !sudo tee % >/dev/null
 
-" Temporary
+" Disable arrows in normal mode
 noremap <up> <nop>
 noremap <down> <nop>
 noremap <left> <nop>
 noremap <right> <nop>
+" control+j & control+k switch tabs
 noremap <C-J> :silent :tabprev<CR><Esc>
 noremap <C-K> :silent :tabnext<CR><Esc>
 
 
+" Textmate command-t (fuzzy find file).
 map <Leader>t :silent :FufCoverageFile <CR><Esc>
 
 
@@ -201,8 +217,6 @@ let delimitMate_matchpairs = "(:),[:],{:}"
 au FileType html let b:delimitMate_matchpairs = "(:),[:],{:},<:>"
 
 let protodefprotogetter = "~/.vim/pullproto.pl"
-
-au! BufEnter *.cpp let b:fswitchdst = 'hpp,h' | let b:fswitchlocs = '.'
 
 " Press F4 to  turn off highlighting and clear any message already displayed.
 map <F4> :noh<CR>
@@ -220,8 +234,7 @@ function! GetCurrentMqPatch()
     return ""
 endfunction
 
-"set statusline=%{GetCurrentMqPatch()}\ %F%m%r%h%w
-
+" Status line
 function! MyStatusLine(mode)
     let statusline=""
 
@@ -265,4 +278,9 @@ endfunction
 au InsertEnter * call InsertStatuslineColor(v:insertmode)
 au InsertLeave * hi StatColor guibg=#95e454 guifg=black ctermbg=lightgreen ctermfg=black
 
+" Control-R U inserts an uuid
 imap <C-r>u <C-R>=system('~/bin/uuidgen.py')<cr>
+
+" Abbreviations
+abbreviate LOG LOG(PR_LOG_DEBUG, (""));<esc>3hi
+
