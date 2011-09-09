@@ -169,7 +169,7 @@ if exists(":Tabularize")
 endif
 
 "Indent guide configuration
-autocmd FileType * IndentGuidesEnable
+autocmd FileType !man IndentGuidesEnable
 let g:indent_guides_auto_colors = 1
 let g:indent_guides_guide_size = 4
 
