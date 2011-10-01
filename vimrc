@@ -114,8 +114,12 @@ filetype indent on
 filetype plugin on
 " Enable spelling check on .tex and .latex files, as well as rst files
 augroup filetypedetect
-  au BufNewFile,BufRead *.tex setlocal spell spelllang=fr
+  au BufNewFile,BufRead *.tex setlocal spell spelllang=en
+  au BufWritePost *.tex :silent !make
   au BufNewFile,BufRead *.rst set syntax=rest
+  autocmd FileType c,cpp,python,javascript,html IndentGuidesEnable
+  let g:indent_guides_auto_colors = 1
+  let g:indent_guides_guide_size = 4
 augroup END
 
 
@@ -133,6 +137,7 @@ au FileType python  set tabstop=4 textwidth=79
 au FileType make set noexpandtab
 
 """ Omnicpp
+set tags+=./tags;$HOME
 set tags+=~/.vim/tags/cpp
 set tags+=~/.vim/tags/sqlite3
 " ctrl+F12 builds tags for the current project.
@@ -169,10 +174,6 @@ if exists(":Tabularize")
 endif
 
 "Indent guide configuration
-autocmd FileType !man IndentGuidesEnable
-let g:indent_guides_auto_colors = 1
-let g:indent_guides_guide_size = 4
-
 " F5 toogles to Gundo panel
 nnoremap <F5> :GundoToggle<CR>
 
@@ -284,3 +285,5 @@ imap <C-r>u <C-R>=system('~/bin/uuidgen.py')<cr>
 " Abbreviations
 abbreviate LOG LOG(PR_LOG_DEBUG, (""));<esc>3hi
 
+
+autocmd BufNewFile,BufRead */_posts/*.textile,*/_posts/*.mdwn syntax match Comment /\%^---\_.\{-}---$/
