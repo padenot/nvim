@@ -1,7 +1,7 @@
 "
-"   _   _(_)_ __ ___  _ __ ___ 
+"   _   _(_)_ __ ___  _ __ ___
 "  / \ / / | '_ ` _ \| '__/ __|
-"   \ V /| | | | | | | | | (__ 
+"   \ V /| | | | | | | | | (__
 "    \_/ |_|_| |_| |_|_|  \___|
 "
 "
@@ -223,7 +223,22 @@ let protodefprotogetter = "~/.vim/pullproto.pl"
 map <F4> :noh<CR>
 set pastetoggle=<F3>
 
-let g:mqStatusPath = getcwd() . "/.hg/patches/status"
+" Control-R U inserts an uuid
+imap <C-r>u <C-R>=system('~/bin/uuidgen.py')<cr>
+
+" Abbreviations
+abbreviate LOG LOG(PR_LOG_DEBUG, (""));<esc>3hi
+
+
+autocmd BufNewFile,BufRead */_posts/*.textile,*/_posts/*.mdwn syntax match Comment /\%^---\_.\{-}---$/
+
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_jump=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_disabled_filetypes = ['cpp', "h"]
+
+set laststatus=2
+let g:mqStatusPath = substitute(system("hg root --cwd " .  getcwd()), "\n", "", "g") . "/.hg/patches/status"
 
 function! GetCurrentMqPatch()
     if filereadable(g:mqStatusPath)
@@ -235,7 +250,8 @@ function! GetCurrentMqPatch()
     return ""
 endfunction
 
-" Status line
+set statusline=%{GetCurrentMqPatch()}\ %F%m%r%h%w
+
 function! MyStatusLine(mode)
     let statusline=""
 
@@ -266,24 +282,15 @@ set statusline=%!MyStatusLine('Enter')
 
 function! InsertStatuslineColor(mode)
   if a:mode == 'i'
-    hi StatColor guibg=orange ctermbg=lightred
+    hi StatColor guibg=#002b36 guifg=#999999 ctermbg=lightred
   elseif a:mode == 'r'
-    hi StatColor guibg=#e454ba ctermbg=magenta
+    hi StatColor guibg=#cb4b16 ctermbg=magenta
   elseif a:mode == 'v'
-    hi StatColor guibg=#e454ba ctermbg=magenta
+    hi StatColor guibg=#dc322f ctermbg=magenta
   else
     hi StatColor guibg=red ctermbg=red
   endif
 endfunction 
 
 au InsertEnter * call InsertStatuslineColor(v:insertmode)
-au InsertLeave * hi StatColor guibg=#95e454 guifg=black ctermbg=lightgreen ctermfg=black
-
-" Control-R U inserts an uuid
-imap <C-r>u <C-R>=system('~/bin/uuidgen.py')<cr>
-
-" Abbreviations
-abbreviate LOG LOG(PR_LOG_DEBUG, (""));<esc>3hi
-
-
-autocmd BufNewFile,BufRead */_posts/*.textile,*/_posts/*.mdwn syntax match Comment /\%^---\_.\{-}---$/
+au InsertLeave * hi StatColor guibg=#999999 guifg=#002b36 ctermbg=lightgreen ctermfg=black
