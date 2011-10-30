@@ -2,9 +2,9 @@
 
 font="MesloLGS-DZ-Regular.ttf"
 
-Color_Off='\e[0m'       # Text Reset
-BIRed='\e[1;91m'        # Red
-BIGreen='\e[1;92m'      # Green
+Color_Off='\033[0m'       # Text Reset
+BIRed='\033[1;91m'        # Red
+BIGreen='\033[1;92m'      # Green
 
 # $1 : the message
 message() {
@@ -48,7 +48,14 @@ file_exist() {
 backup() {
   if [ -e $1 ]
   then
-    mv $1 $1.old
+    message "Backuping $1"
+    mv --backup=numbered $1 $1.old
+    if [ $? ]
+    then
+      error "Could not backup $1."
+    else
+      ok "$1 backuped to $1.old."
+    fi
   else
     error "$1 doesn't exist"
   fi
@@ -58,8 +65,6 @@ install_font() {
   mkdir -p ~/.fonts/
   wget paul.cx/public/$font -O ~/.fonts/$font
 }
-
-[ -d ~/.vim ] && backup_old
 
 # vim version
 if [ -z $(vim --version | grep -o 7.3) ]
@@ -72,9 +77,9 @@ fi
 # font
 if font_exist $font
 then
-  install_font
-else
   ok "Meslo font already available on the system."
+else
+  install_font $font
 fi
 
 # ctags
@@ -84,11 +89,11 @@ then
 else
   message "ctags not found on the system. Installing..."
   sudo apt-get -y install ctags
-  if $?
+  if [ $? ]
   then
-    error "Error while installing ctags."
-  else
     ok "ctags installed."
+  else
+    error "Error while installing ctags."
   fi
 fi
 
@@ -98,31 +103,44 @@ then
 else
   message "git not found on the system. Installing..."
   sudo apt-get -y install git
-  if $?
+  if [ $? ]
   then
-    error "Error while installing git"
-  else
     ok "git installed"
+  else
+    error "Error while installing git"
   fi
 fi
 
 cd ~
 
-git clone git://github.com/padenot/.vim && echo "Clone OK"
-
-if $?
+if [ -d ~/.vim ]
 then
-  error "Could not clone repository."
-else
+  backup ~/.vim
+fi
+
+if [ -e ~/.vimrc ]
+then
+  backup ~/.vimrc
+fi
+
+if [ -L ~/.vimrc ]
+then
+  rm ~/.vimrc
+fi
+
+git clone git://github.com/padenot/.vim
+
+if [ $? ]
+then
   ok "Repository cloned sucessfully."
+else
+  error "Could not clone repository."
 fi
 
 ln -s ~/.vim/vimrc ~/.vimrc
-if $?
+if [ $? ]
 then
-  error "Cound not symlink the config."
-else
   ok "Config symlinked successfully."
+else
+  error "Cound not symlink the config."
 fi
-
-vim ~/.vim/README.md
