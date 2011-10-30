@@ -146,6 +146,7 @@ else
 fi
 
 message "Fetching submodules"
-cd .vim/
+
+cd ~/.vim
 git submodule init
 git submodule update

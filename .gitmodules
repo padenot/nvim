@@ -3,7 +3,7 @@
 	url = http://github.com/sjl/gundo.vim
 [submodule "bundle/nerdcommenter"]
 	path = bundle/nerdcommenter
-	url = http://github.com/scrooloose/nerdcommenter
+	url = http://github.com/scrooloose/nerdcommenter.git
 [submodule "bundle/processing"]
 	path = bundle/processing
 	url = https://github.com/sophacles/vim-processing.git
