@@ -1,7 +1,7 @@
 # Paul's .vim directory
 
 ## tl;dr 
-Paste this into a terminal :
+Paste this into a terminal, if you are using Debian or Ubuntu :
 
 ``
 wget https://github.com/padenot/.vim/raw/master/bootstrap.sh -O - | sh
@@ -18,12 +18,25 @@ support for python scripting, and shall link against the same libraries
 that it has been compiled to (use the  ``ldd`` command for troubleshooting).
 
 I shall warn that I prefer spaces over tabs, and like 2 space indent.
-I use DroidSansMono.ttf, and you should install ctags to have autocompletion
+I use Meslo as a font, and you should install ctags to have autocompletion
 enabled.
 
 You should simlink the vimrc file to ~/.vimrc, for this configuration to work.
 
     ln -s ~/.vim/vimrc ~/.vimrc
+
+After cloning the repo, issue these commands : 
+```sh
+cd .vim
+git submodule init
+git submodule update
+```
+
+To update the plugins :
+```sh
+cd .vim
+sh update.sh
+```
 
 ##Keybindings :
 ,
