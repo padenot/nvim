@@ -10,7 +10,6 @@
 call pathogen#infect()
 
 """ Standard ViM options
-" Set nocompatible
 set nocp
 set ttyfast
 " , is a nice leader key
@@ -89,22 +88,23 @@ set scrolloff=5
 set sidescrolloff=5
 set sidescroll=1
 set viminfo='10,:20,\"100,%,n~/.viminfo
-" After opening a file, put the cursor when it was last time this file was
-" edited.
-autocmd BufReadPost * normal `"
 set history=1000
 set nobackup
 set nowritebackup
 set noswapfile
+" Persistent undo
 set undofile
 set undodir=~/.vim/undodir
 
+" Use TAB in normal mode to fold/unfold
 set foldmethod=indent
 map <Tab> za
 au BufReadPost * normal zR
 
 " SCons support
 set makeprg=scons\ -u\ \.
+" Ack is "better than grep"
+set grepprg=ack-grep
 
 " Set the GUI Size to one screen
 au GUIEnter * set lines=73 columns=84
@@ -120,21 +120,22 @@ augroup filetypedetect
   autocmd FileType c,cpp,python,javascript,html IndentGuidesEnable
   let g:indent_guides_auto_colors = 1
   let g:indent_guides_guide_size = 4
+  " After opening a file, put the cursor when it was last time this file was edited.
+  autocmd BufReadPost * normal `"
+  " SConscript & SConstruct are python
+  au BufRead,BufNewFile {SConscript,SConstruct}  set ft=python
+  " .rl (ragel parsing file) should be highlighted as C
+  au BufRead,BufNewFile {*.rl} set ft=c
+  " .ipdl (inte-process-definition-language) should be highlighted as C++
+  au BufRead,BufNewFile {*.ipdl} set ft=cpp
+  " highlight .sjs (server side js) as javacript
+  au BufRead,BufNewFile {*.sjs} set ft=javascript
+  " Respect PEP8 while editing python
+  au FileType python  set tabstop=4 textwidth=79
+  " When using make, we shouldn't expand tabs.
+  au FileType make set noexpandtab
 augroup END
 
-
-" SConscript & SConstruct are python
-au BufRead,BufNewFile {SConscript,SConstruct}  set ft=python
-" .rl (ragel parsing file) should be highlighted as C
-au BufRead,BufNewFile {*.rl} set ft=c
-" .ipdl (inte-process-definition-language) should be highlighted as C++
-au BufRead,BufNewFile {*.ipdl} set ft=cpp
-" highlight .sjs (server side js) as javacript
-au BufRead,BufNewFile {*.sjs} set ft=javascript
-" Respect PEP8 while editing python
-au FileType python  set tabstop=4 textwidth=79
-" When using make, we shouldn't expand tabs.
-au FileType make set noexpandtab
 
 """ Omnicpp
 set tags+=./tags;$HOME
@@ -173,7 +174,6 @@ if exists(":Tabularize")
     noremap <Leader>z| :Tabularize /|<CR>
 endif
 
-"Indent guide configuration
 " F5 toogles to Gundo panel
 nnoremap <F5> :GundoToggle<CR>
 
@@ -181,11 +181,6 @@ nnoremap <F5> :GundoToggle<CR>
 noremap <F6> :TagbarToggle<CR>
 
 " Control tab switches between cpp an .h file, as in Eclipse
-"let b:fsnonewfile = "on"
-"au! BufEnter *.h,*.hpp b:fswitchdst = 'cpp,c'
-"let b:fswitchlocs = 'reg:/include/src/,reg:/include.*/src/,../src'
-"au! BufEnter *.cpp,*.c let b:fswitchdst = 'hpp,h' 
-"let b:fswitchlocs = '.,../public'
 map <C-Tab> :FSHere<CR><Esc>
 
 augroup mycppfiles
@@ -208,35 +203,38 @@ noremap <right> <nop>
 " control+j & control+k switch tabs
 noremap <C-J> :silent :tabprev<CR><Esc>
 noremap <C-K> :silent :tabnext<CR><Esc>
-
+" leader a : ack the word under cursor
+nnoremap <leader>a :grep <cword><CR>
 
 " Textmate command-t (fuzzy find file).
 map <Leader>t :silent :FufCoverageFile <CR><Esc>
 
-
 let delimitMate_matchpairs = "(:),[:],{:}"
 au FileType html let b:delimitMate_matchpairs = "(:),[:],{:},<:>"
 
-let protodefprotogetter = "~/.vim/pullproto.pl"
-
-" Press F4 to  turn off highlighting and clear any message already displayed.
+" Press F4 to clear highlighting.
 map <F4> :noh<CR>
+" Allow to paste formatted code nicely
 set pastetoggle=<F3>
 
 " Control-R U inserts an uuid
 imap <C-r>u <C-R>=system('~/bin/uuidgen.py')<cr>
 
-" Abbreviations
-abbreviate LOG LOG(PR_LOG_DEBUG, (""));<esc>3hi
-
-
+" Highlight YAML preambles in Jekyll posts
 autocmd BufNewFile,BufRead */_posts/*.textile,*/_posts/*.mdwn syntax match Comment /\%^---\_.\{-}---$/
+" Highlight code blocks in Jekyll posts
+autocmd BufNewFile,BufRead */_posts/*.textile,*/_posts/*.mdwn syntax region Comment start=/^{% highlight .* %}$/ end=/{% endhighlight %}/
 
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_jump=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_disabled_filetypes = ['cpp', "h"]
+" Activate syntastic. Prevent its activation for c++ because it screws up in
+" Mozilla codebase. TODO: Make this work.
+if exists(":Errors")
+  let g:syntastic_enable_signs=1
+  let g:syntastic_auto_jump=1
+  let g:syntastic_auto_loc_list=1
+  let g:syntastic_disabled_filetypes = ['cpp', "h"]
+endif
 
+" Nice statusbar (found here : http://paulrouget.com/e/mqpatch_vim/)
 set laststatus=2
 let g:mqStatusPath = substitute(system("hg root --cwd " .  getcwd()), "\n", "", "g") . "/.hg/patches/status"
 
@@ -294,3 +292,15 @@ endfunction
 
 au InsertEnter * call InsertStatuslineColor(v:insertmode)
 au InsertLeave * hi StatColor guibg=#999999 guifg=#002b36 ctermbg=lightgreen ctermfg=black
+
+" In CSS, F8 and F9 change colors by one shade
+if filereadable("~/.vim/cssScript/hex.php")
+  function! HexUpdate(operator, shade)
+      let hex = expand("<cword>")
+      let newHex = system("php ~/.vim/cssScript/hex.php ". hex ." ". a:operator . a:shade)
+      execute "normal ciw". newHex
+  endfunction
+
+  nnoremap <F8> :call HexUpdate("-",1)<CR>
+  nnoremap <F9> :call HexUpdate("+",1)<CR>
+endif
