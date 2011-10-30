@@ -1,0 +1,42 @@
+[submodule "bundle/gundo"]
+	path = bundle/gundo
+	url = http://github.com/sjl/gundo.vim
+[submodule "bundle/nerdcommenter"]
+	path = bundle/nerdcommenter
+	url = http://github.com/scrooloose/nerdcommenter
+[submodule "bundle/processing"]
+	path = bundle/processing
+	url = https://github.com/sophacles/vim-processing.git
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule "bundle/tabular"]
+	path = bundle/tabular
+	url = https://github.com/godlygeek/tabular.git
+[submodule "bundle/tagbar"]
+	path = bundle/tagbar
+	url = https://github.com/majutsushi/tagbar.git
+[submodule "bundle/ultisnips"]
+	path = bundle/ultisnips
+	url = https://github.com/vim-scripts/UltiSnips.git
+[submodule "bundle/fswitch"]
+	path = bundle/fswitch
+	url = https://github.com/derekwyatt/vim-fswitch.git
+[submodule "bundle/fuzzyfinder"]
+	path = bundle/fuzzyfinder
+	url = https://github.com/clones/vim-fuzzyfinder
+[submodule "bundle/indent-guides"]
+	path = bundle/indent-guides
+	url = https://github.com/nathanaelkane/vim-indent-guides.git
+[submodule "bundle/markdown"]
+	path = bundle/markdown
+	url = https://github.com/plasticboy/vim-markdown.git
+[submodule "bundle/orgmode"]
+	path = bundle/orgmode
+	url = https://github.com/jceb/vim-orgmode.git
+[submodule "bundle/speeddating"]
+	path = bundle/speeddating
+	url = https://github.com/tpope/vim-speeddating.git
+[submodule "bundle/surround"]
+	path = bundle/surround
+	url = https://github.com/tpope/vim-surround.git

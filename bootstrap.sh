@@ -144,3 +144,8 @@ then
 else
   error "Cound not symlink the config."
 fi
+
+message "Fetching submodules"
+cd .vim/
+git submodule init
+git submodule update
