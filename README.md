@@ -26,6 +26,7 @@ You should simlink the vimrc file to ~/.vimrc, for this configuration to work.
     ln -s ~/.vim/vimrc ~/.vimrc
 
 After cloning the repo, issue these commands : 
+
 ```sh
 cd .vim
 git submodule init
@@ -33,6 +34,7 @@ git submodule update
 ```
 
 To update the plugins :
+
 ```sh
 cd .vim
 sh update.sh
