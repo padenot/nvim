@@ -114,7 +114,7 @@ filetype indent on
 filetype plugin on
 " Enable spelling check on .tex and .latex files, as well as rst files
 augroup filetypedetect
-  au BufNewFile,BufRead *.tex setlocal spell spelllang=en
+  au BufNewFile,BufRead {*.tex,*.md,*.mdwn,*.markdown} setlocal spell spelllang=en nocindent
   au BufWritePost *.tex :silent !make
   au BufNewFile,BufRead *.rst set syntax=rest
   autocmd FileType c,cpp,python,javascript,html IndentGuidesEnable
@@ -299,8 +299,9 @@ if filereadable("~/.vim/cssScript/hex.php")
       let hex = expand("<cword>")
       let newHex = system("php ~/.vim/cssScript/hex.php ". hex ." ". a:operator . a:shade)
       execute "normal ciw". newHex
-  endfunction
+endfunction
 
   nnoremap <F8> :call HexUpdate("-",1)<CR>
   nnoremap <F9> :call HexUpdate("+",1)<CR>
 endif
+
