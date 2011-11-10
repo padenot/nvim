@@ -30,7 +30,7 @@ set hlsearch
 " Show the line numbers.
 set number
 " Automatic indentation for C-like languages.
-set cindent
+set smartindent
 " Write (=save) the file whenever it is compiled or when
 " the user changes files in a buffer.
 set autowrite
@@ -58,7 +58,7 @@ set shiftwidth=2
 set ignorecase
 set smartcase
 " Font in GUI mode : https://github.com/andreberg/Meslo-Font
-set guifont=Meslo\ LG\ S\ DZ\ 8
+set guifont=Meslo\ LG\ S\ DZ\ 9 
 " remove the useless buttons from gvim
 set guioptions=nomenu
 " Remove menubar
@@ -107,7 +107,7 @@ set makeprg=scons\ -u\ \.
 set grepprg=ack-grep
 
 " Set the GUI Size to one screen
-au GUIEnter * set lines=73 columns=84
+au GUIEnter * set lines=48 columns=84
 
 """ File type specific
 filetype indent on
@@ -141,8 +141,11 @@ augroup END
 set tags+=./tags;$HOME
 set tags+=~/.vim/tags/cpp
 set tags+=~/.vim/tags/sqlite3
+set tags+=~/.vimtags
 " ctrl+F12 builds tags for the current project.
 map <C-F12> :!ctags -R --sort=yes --c++-kinds=+lp --fields=+iaS --extra=+q .<CR>
+
+au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
 
 " OmniCppComplete
 let OmniCpp_NamespaceSearch = 1
