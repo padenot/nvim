@@ -25,3 +25,6 @@ backuped
 spelllang=fr
 codebase
 Linearizability
+Multithreading
+multithreading
+cacheline
