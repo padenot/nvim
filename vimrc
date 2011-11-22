@@ -96,6 +96,7 @@ set noswapfile
 " Persistent undo
 set undofile
 set undodir=~/.vim/undodir
+set showcmd
 
 " Use TAB in normal mode to fold/unfold
 set foldmethod=indent
