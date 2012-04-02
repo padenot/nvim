@@ -79,10 +79,13 @@ set comments=s1:/**,mb:*,ex:*/
 " We will almost never open .o in vim, so remove them from matching
 set wildignore+=*.o,*.obj,.git,*.swp,*.svn,*.pyc
 " Add · for trailing spaces.
-set list listchars=tab:\ \ ,trail:·
+" Use the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:▸\ ,trail:· list
 set lazyredraw
 " Don't go to the start of line when using C-D and such
 set nostartofline
+" Cool menu which show possible autocompletion
+set wildmenu
 set modeline
 set scroll=5
 set scrolloff=5
@@ -114,9 +117,11 @@ au GUIEnter * set lines=48 columns=84
 """ File type specific
 filetype indent on
 filetype plugin on
+let g:spell_choices="en,fr"
 " Enable spelling check on .tex and .latex files, as well as rst files
 augroup filetypedetect
-  au BufNewFile,BufRead {*.tex,*.md,*.mdwn,*.markdown} setlocal spell spelllang=en nocindent
+  au BufNewFile,BufRead {*.tex} setlocal spell nocindent
+  au BufNewFile,BufRead {*.md,*.mdwn,*.markdown} setlocal spell nocindent ft=markdown
   au BufWritePost *.tex :silent !make
   au BufNewFile,BufRead *.rst set syntax=rest
   autocmd FileType c,cpp,python,javascript,html IndentGuidesEnable
@@ -132,6 +137,8 @@ augroup filetypedetect
   au BufRead,BufNewFile {*.ipdl} set ft=cpp
   " highlight .sjs (server side js) as javacript
   au BufRead,BufNewFile {*.sjs} set ft=javascript
+  " .inc are XML in mozilla codebase
+  au BufRead,BufNewFile {*.inc} set ft=xml
   " Respect PEP8 while editing python
   au FileType python  set tabstop=4 textwidth=79
   " When using make, we shouldn't expand tabs.
@@ -177,6 +184,7 @@ if exists(":Tabularize")
     noremap <Leader>a= :Tabularize /=<CR>
     noremap <Leader>z| :Tabularize /|<CR>
     noremap <Leader>z| :Tabularize /|<CR>
+    noremap <Leader>z: :Tabularize /:<CR>
 endif
 
 " F5 toogles to Gundo panel
@@ -185,12 +193,14 @@ nnoremap <F5> :GundoToggle<CR>
 " Tag list toggle
 noremap <F6> :TagbarToggle<CR>
 
+" 
+noremap <F7> toogleLang()
+
 " Control tab switches between cpp an .h file, as in Eclipse
 map <C-Tab> :FSHere<CR><Esc>
 
 " Shortcut to rapidly toggle `set list`
 nmap <leader>l :set list!<CR>
-set nolist
 
 map <C-S-]> gt
 map <C-S-[> gT
@@ -204,9 +214,6 @@ map <M-7> 7gt
 map <M-8> 8gt
 map <M-9> 9gt
 map <M-0> :tablast<CR>
-
-" Use the same symbols as TextMate for tabstops and EOLs
-set listchars=tab:▸\ ,eol:¬
 
 augroup mycppfiles
   au!
@@ -328,3 +335,5 @@ endfunction
   nnoremap <F9> :call HexUpdate("+",1)<CR>
 endif
 
+
+set t_Co=256
