@@ -59,7 +59,7 @@ set shiftwidth=2
 set ignorecase
 set smartcase
 " Font in GUI mode : https://github.com/andreberg/Meslo-Font
-set guifont=Meslo\ LG\ S\ DZ\ 9 
+set guifont=Meslo\ LG\ S\ DZ\ 11
 " remove the useless buttons from gvim
 set guioptions=nomenu
 " Remove menubar
@@ -146,38 +146,6 @@ augroup filetypedetect
 augroup END
 
 
-"""" Omnicpp
-"set tags+=./tags;$HOME
-"set tags+=~/.vim/tags/cpp
-"set tags+=~/.vim/tags/sqlite3
-"set tags+=~/.vimtags
-"" ctrl+F12 builds tags for the current project.
-"map <C-F12> :!ctags -R --sort=yes --c++-kinds=+lp --fields=+iaS --extra=+q .<CR>
-
-"au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
-
-"" OmniCppComplete
-"let OmniCpp_NamespaceSearch = 1
-"let OmniCpp_GlobalScopeSearch = 1
-"let OmniCpp_ShowAccess = 1
-"let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
-"let OmniCpp_MayCompleteDot = 1 " autocomplete after .
-"let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
-"let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
-"let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
-"" automatically open and close the popup menu / preview window
-"au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-"set completeopt=menuone,menu,longest,preview
-
-"autocmd FileType python set omnifunc=pythoncomplete#Complete
-"autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-"autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-"autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-"autocmd FileType c set omnifunc=ccomplete#Complete
-
-
 " Mapping for tabularize plugin
 if exists(":Tabularize")
     noremap <Leader>a= :Tabularize /=<CR>
@@ -192,9 +160,6 @@ nnoremap <F5> :GundoToggle<CR>
 
 " Tag list toggle
 noremap <F6> :TagbarToggle<CR>
-
-" 
-noremap <F7> toogleLang()
 
 " Control tab switches between cpp an .h file, as in Eclipse
 map <C-Tab> :FSHere<CR><Esc>
@@ -233,10 +198,12 @@ noremap <down> <nop>
 noremap <left> <nop>
 noremap <right> <nop>
 " control+j & control+k switch tabs
-noremap <C-J> :silent :tabprev<CR><Esc>
-noremap <C-K> :silent :tabnext<CR><Esc>
+noremap <C-J> :silent :bp<CR><Esc>
+noremap <C-K> :silent :bn<CR><Esc>
 " leader a : ack the word under cursor
 nnoremap <leader>a :grep <cword><CR>
+
+map <F3> :NERDTreeToggle<CR>
 
 " Textmate command-t (fuzzy find file).
 map <Leader>t :silent :FufCoverageFile <CR><Esc>
@@ -259,10 +226,10 @@ autocmd BufNewFile,BufRead */_posts/*.textile,*/_posts/*.mdwn syntax region Comm
 
 " Activate syntastic. Prevent its activation for c++ because it screws up in
 " Mozilla codebase. TODO: Make this work.
-  let g:syntastic_enable_signs=1
-  let g:syntastic_auto_jump=1
-  let g:syntastic_auto_loc_list=1
-  let g:syntastic_disabled_filetypes = ['cpp', "h"]
+let g:syntastic_enable_signs=1
+"let g:syntastic_auto_jump=1
+"let g:syntastic_auto_loc_list=1
+let g:syntastic_disabled_filetypes = ["cpp", "h", "c"]
 
 " Nice statusbar (found here : http://paulrouget.com/e/mqpatch_vim/)
 set laststatus=2
