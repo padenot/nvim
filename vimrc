@@ -59,7 +59,7 @@ set shiftwidth=2
 set ignorecase
 set smartcase
 " Font in GUI mode : https://github.com/andreberg/Meslo-Font
-set guifont=Meslo\ LG\ S\ DZ\ 11
+set guifont=Meslo\ LG\ S\ DZ\ 9
 " remove the useless buttons from gvim
 set guioptions=nomenu
 " Remove menubar
