@@ -22,9 +22,6 @@
 [submodule "bundle/fswitch"]
 	path = bundle/fswitch
 	url = https://github.com/derekwyatt/vim-fswitch.git
-[submodule "bundle/fuzzyfinder"]
-	path = bundle/fuzzyfinder
-	url = https://github.com/clones/vim-fuzzyfinder
 [submodule "bundle/indent-guides"]
 	path = bundle/indent-guides
 	url = https://github.com/nathanaelkane/vim-indent-guides.git
@@ -49,3 +46,6 @@
 [submodule "bundle/ctrl-p"]
 	path = bundle/ctrl-p
 	url = https://github.com/kien/ctrlp.vim
+[submodule "bundle/minibufexpl.vim"]
+	path = bundle/minibufexpl.vim
+	url = https://github.com/fholgado/minibufexpl.vim
