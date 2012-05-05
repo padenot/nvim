@@ -73,13 +73,13 @@ Ctrl+Tab
 
 > Alternate between .cpp & .h and other file pairs
 
-,t
+ctrl+p
 
-> Open fuzzy file searching (ctrl+l to open in a new tab)
+> Open fuzzy file searching
 
 ctrl+j, ctrl+k
 
-> Previous/next tab
+> Previous/next buffer
 
 TAB
 
@@ -99,7 +99,7 @@ F8, F9
 
 ## Plugin list :
 - Fswitch : switch between `.h` and `.cpp` using ctrl+tab
-- Fuzzyfinder : `,t` to fuzzy search files
+- ctrl+p : fuzzy file finder
 - Gundo : `F5` open the undo tree
 - Indent-guides : Display nice indent guides
 - Markdown : nice markdown syntax coloring (plus goodies for Jekyll authoring)
@@ -117,4 +117,7 @@ F8, F9
 - rst_table.vim : utility to ease authoring of table in reStructuredText
 - SearchComplete.vim : autocomplete the search
 - textformat.vim : justify text and more (`,a[l|r|j|c]`, to align left, right, justified, center)
+- vim-javascript : nicer default for js file editing
+- minbufexpl.vim : tab-like buffers
+- vim-coffeescript : nicer default for coffeescript
 

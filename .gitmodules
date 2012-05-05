@@ -49,3 +49,9 @@
 [submodule "bundle/minibufexpl.vim"]
 	path = bundle/minibufexpl.vim
 	url = https://github.com/fholgado/minibufexpl.vim
+[submodule "bundle/nerdtree"]
+	path = bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree
+[submodule "bunle/vim-coffee-script"]
+	path = bunle/vim-coffee-script
+	url = https://github.com/kchmck/vim-coffee-script

@@ -1,8 +1,8 @@
 "
 "   _   _(_)_ __ ___  _ __ ___
 "  / \ / / | '_ ` _ \| '__/ __|
-"   \ V /| | | | | | | | | (__
-"    \_/ |_|_| |_| |_|_|  \___|
+"  \ V /| | | | | | | | | (__
+"   \_/ |_|_| |_| |_|_|  \___|
 "
 "
 " Paul ADENOT -- 2011
@@ -204,9 +204,6 @@ noremap <C-K> :silent :bn<CR><Esc>
 nnoremap <leader>a :grep <cword><CR>
 
 map <F3> :NERDTreeToggle<CR>
-
-" Textmate command-t (fuzzy find file).
-map <Leader>t :silent :FufCoverageFile <CR><Esc>
 
 let delimitMate_matchpairs = "(:),[:],{:}"
 au FileType html let b:delimitMate_matchpairs = "(:),[:],{:},<:>"
