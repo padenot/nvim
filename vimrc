@@ -26,6 +26,8 @@ if has("gui_running")
 else
   color aureal
 endif
+" Put a colored line at 80 characters
+set colorcolumn=80
 " Highlight matched pattern when searching or replacing.
 set hlsearch
 " Show the line numbers.
