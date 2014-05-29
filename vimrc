@@ -23,6 +23,8 @@ syntax on
 set background=dark
 if has("gui_running")
   colorscheme solarized
+  let g:solarized_contrast="high"    "default value is normal
+  let g:solarized_visibility="high"    "default value is normal
 else
   color aureal
 endif
@@ -110,8 +112,8 @@ au BufReadPost * normal zR
 
 " SCons support
 set makeprg=scons\ -u\ \.
-" Ack is "better than grep"
-set grepprg=ack-grep
+" ag is "better than ack"
+set grepprg=ag
 
 " Set the GUI Size to one screen
 au GUIEnter * set lines=48 columns=84
@@ -126,6 +128,7 @@ augroup filetypedetect
   au BufNewFile,BufRead {*.md,*.mdwn,*.markdown} setlocal spell nocindent ft=markdown
   au BufWritePost *.tex :silent !make
   au BufNewFile,BufRead *.rst set syntax=rest
+  au BufNewFile,BufRead *.webidl set syntax=idl
   autocmd FileType c,cpp,python,javascript,html IndentGuidesEnable
   let g:indent_guides_auto_colors = 1
   let g:indent_guides_guide_size = 4
@@ -135,7 +138,7 @@ augroup filetypedetect
   au BufRead,BufNewFile {SConscript,SConstruct}  set ft=python
   " .rl (ragel parsing file) should be highlighted as C
   au BufRead,BufNewFile {*.rl} set ft=c
-  " .ipdl (inte-process-definition-language) should be highlighted as C++
+  " .ipdl (inter-process-definition-language) should be highlighted as C++
   au BufRead,BufNewFile {*.ipdl} set ft=cpp
   " highlight .sjs (server side js) as javacript
   au BufRead,BufNewFile {*.sjs} set ft=javascript
@@ -146,6 +149,11 @@ augroup filetypedetect
   " When using make, we shouldn't expand tabs.
   au FileType make set noexpandtab
 augroup END
+
+autocmd QuickFixCmdPost vimgrep cwindow
+noremap <C-F> :grep 
+"autocmd QuickFixCmdPre noremap <C-J> :cn<CR>
+"autocmd QuickFixCmdPost noremap <C-J> :silent :bp<CR><Esc>
 
 
 " Mapping for tabularize plugin
@@ -184,9 +192,9 @@ map <M-0> :tablast<CR>
 
 augroup mycppfiles
   au!
-  au BufRead *.cpp let b:fswitchlocs = '.,../public/'
-  au BufRead *.cpp let b:fswitchdst = "h"
-  au BufRead *.h let b:fswitchdst  = 'cpp,cc,C'
+  au BufRead *.cpp let b:fswitchlocs = '.,../public/,../include/'
+  au BufRead *.cpp let b:fswitchdst = "h,hpp"
+  au BufRead *.h let b:fswitchdst  = 'cpp,cc,C,cxx'
   au BufRead *.h let b:fswitchlocs = '.,../src/'
 augroup END
 
@@ -199,7 +207,7 @@ noremap <up> <nop>
 noremap <down> <nop>
 noremap <left> <nop>
 noremap <right> <nop>
-" control+j & control+k switch tabs
+" control+j & control+k switch buffers
 noremap <C-J> :silent :bp<CR><Esc>
 noremap <C-K> :silent :bn<CR><Esc>
 " leader a : ack the word under cursor
@@ -284,22 +292,45 @@ function! InsertStatuslineColor(mode)
   else
     hi StatColor guibg=red ctermbg=red
   endif
-endfunction 
+endfunction
 
 au InsertEnter * call InsertStatuslineColor(v:insertmode)
 au InsertLeave * hi StatColor guibg=#999999 guifg=#002b36 ctermbg=lightgreen ctermfg=black
 
-" In CSS, F8 and F9 change colors by one shade
-if filereadable("~/.vim/cssScript/hex.php")
-  function! HexUpdate(operator, shade)
-      let hex = expand("<cword>")
-      let newHex = system("php ~/.vim/cssScript/hex.php ". hex ." ". a:operator . a:shade)
-      execute "normal ciw". newHex
-endfunction
-
-  nnoremap <F8> :call HexUpdate("-",1)<CR>
-  nnoremap <F9> :call HexUpdate("+",1)<CR>
-endif
-
-
 set t_Co=256
+
+set path=,,.,../include
+function! Gfw()
+  let b = bufnr('')
+  normal mz
+  let b = bufnr('')
+  wincmd w
+  exe "b " . b
+  normal `zgF
+endfun
+nnoremap ;f :call Gfw()<cr>
+
+
+let g:clang_library_path="/usr/lib/llvm-3.4/lib/"
+
+" make w work with camelcase words
+map <silent> w <Plug>CamelCaseMotion_w
+map <silent> b <Plug>CamelCaseMotion_b
+map <silent> e <Plug>CamelCaseMotion_e
+sunmap w
+sunmap b
+sunmap e
+
+omap <silent> iw <Plug>CamelCaseMotion_iw
+xmap <silent> iw <Plug>CamelCaseMotion_iw
+omap <silent> ib <Plug>CamelCaseMotion_ib
+xmap <silent> ib <Plug>CamelCaseMotion_ib
+omap <silent> ie <Plug>CamelCaseMotion_ie
+xmap <silent> ie <Plug>CamelCaseMotion_ie
+
+omap <silent> aw <Plug>CamelCaseMotion_aw
+xmap <silent> aw <Plug>CamelCaseMotion_aw
+omap <silent> ab <Plug>CamelCaseMotion_ab
+xmap <silent> ab <Plug>CamelCaseMotion_ab
+omap <silent> ae <Plug>CamelCaseMotion_ae
+xmap <silent> ae <Plug>CamelCaseMotion_ae

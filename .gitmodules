@@ -16,9 +16,6 @@
 [submodule "bundle/tagbar"]
 	path = bundle/tagbar
 	url = https://github.com/majutsushi/tagbar.git
-[submodule "bundle/ultisnips"]
-	path = bundle/ultisnips
-	url = https://github.com/vim-scripts/UltiSnips.git
 [submodule "bundle/fswitch"]
 	path = bundle/fswitch
 	url = https://github.com/derekwyatt/vim-fswitch.git
@@ -46,9 +43,6 @@
 [submodule "bundle/ctrl-p"]
 	path = bundle/ctrl-p
 	url = https://github.com/kien/ctrlp.vim
-[submodule "bundle/minibufexpl.vim"]
-	path = bundle/minibufexpl.vim
-	url = https://github.com/fholgado/minibufexpl.vim
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree
