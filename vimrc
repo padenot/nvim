@@ -21,13 +21,10 @@ let c_comment_strings=1
 syntax on
 " Color scheme.
 set background=dark
-if has("gui_running")
-  colorscheme solarized
-  let g:solarized_contrast="high"    "default value is normal
-  let g:solarized_visibility="high"    "default value is normal
-else
-  color aureal
-endif
+colorscheme solarized
+let g:solarized_termcolors=256
+let g:solarized_contrast="high"    "default value is normal
+let g:solarized_visibility="high"    "default value is normal
 " Put a colored line at 80 characters
 set colorcolumn=80
 " Highlight matched pattern when searching or replacing.
@@ -63,7 +60,7 @@ set shiftwidth=2
 set ignorecase
 set smartcase
 " Font in GUI mode : https://github.com/andreberg/Meslo-Font
-set guifont=Meslo\ LG\ S\ DZ\ 9
+set guifont=Meslo\ LG\ S\ DZ\ for\ Powerline\ 9
 " remove the useless buttons from gvim
 set guioptions=nomenu
 " Remove menubar
@@ -81,7 +78,8 @@ set dictionary+="/usr/share/dict/french"
 " Set the Doxygen style comments, to ease the writing of documentation
 set comments=s1:/**,mb:*,ex:*/
 " We will almost never open .o in vim, so remove them from matching
-set wildignore+=*.o,*.obj,.git,*.swp,*.svn,*.pyc
+set wildignore+=*.o,*.obj,.git,*.swp,*.svn,*.pyc,*.rej
+set wildignorecase
 " Add · for trailing spaces.
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,trail:· list
@@ -252,51 +250,6 @@ function! GetCurrentMqPatch()
     return ""
 endfunction
 
-set statusline=%{GetCurrentMqPatch()}\ %F%m%r%h%w
-
-function! MyStatusLine(mode)
-    let statusline=""
-
-    if filereadable(g:mqStatusPath)
-      let statusline .= "%#PatchColor#" . GetCurrentMqPatch() . "%*"
-    endif
-
-    if a:mode == 'Enter'
-        let statusline.="%#StatColor#"
-    endif
-    let statusline.="\(%n\)\ %f\ "
-    if a:mode == 'Enter'
-        let statusline.="%*"
-    endif
-    let statusline.="%#Modified#%m"
-    if a:mode == 'Leave'
-        let statusline.="%*%r"
-    elseif a:mode == 'Enter'
-        let statusline.="%r%*"
-    endif
-    let statusline .= "\ (%l/%L,\ %c)\ %P%=%h%w\ %y\ [%{&encoding}:%{&fileformat}]\ \ "
-    return statusline
-endfunction
-
-au WinEnter * setlocal statusline=%!MyStatusLine('Enter')
-au WinLeave * setlocal statusline=%!MyStatusLine('Leave')
-set statusline=%!MyStatusLine('Enter')
-
-function! InsertStatuslineColor(mode)
-  if a:mode == 'i'
-    hi StatColor guibg=#002b36 guifg=#999999 ctermbg=lightred
-  elseif a:mode == 'r'
-    hi StatColor guibg=#cb4b16 ctermbg=magenta
-  elseif a:mode == 'v'
-    hi StatColor guibg=#dc322f ctermbg=magenta
-  else
-    hi StatColor guibg=red ctermbg=red
-  endif
-endfunction
-
-au InsertEnter * call InsertStatuslineColor(v:insertmode)
-au InsertLeave * hi StatColor guibg=#999999 guifg=#002b36 ctermbg=lightgreen ctermfg=black
-
 set t_Co=256
 
 set path=,,.,../include
@@ -334,3 +287,36 @@ omap <silent> ab <Plug>CamelCaseMotion_ab
 xmap <silent> ab <Plug>CamelCaseMotion_ab
 omap <silent> ae <Plug>CamelCaseMotion_ae
 xmap <silent> ae <Plug>CamelCaseMotion_ae
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+
+let g:ctrlp_max_files=0
+let g:ctrlp_user_command = ['.hg', 'cd %s && hg manifest']
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn|obj*)$'
+  \ }
+
+" Vundle vimrc
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+"
+let g:ycm_confirm_extra_conf = 0 
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'Valloric/YouCompleteMe'
+
+map <C-]> :YcmCompleter GoToImprecise<CR>
+
+" End configuration, makes the plugins available
+call vundle#end()
+filetype plugin indent on

@@ -13,9 +13,6 @@
 [submodule "bundle/tabular"]
 	path = bundle/tabular
 	url = https://github.com/godlygeek/tabular.git
-[submodule "bundle/tagbar"]
-	path = bundle/tagbar
-	url = https://github.com/majutsushi/tagbar.git
 [submodule "bundle/fswitch"]
 	path = bundle/fswitch
 	url = https://github.com/derekwyatt/vim-fswitch.git
@@ -52,3 +49,6 @@
 [submodule "bundle/vim-coffee-script"]
 	path = bundle/vim-coffee-script
 	url = https://github.com/kchmck/vim-coffee-script
+[submodule "bundle/Vundle.vim"]
+	path = bundle/Vundle.vim
+	url = ./Vundle
