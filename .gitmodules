@@ -61,3 +61,6 @@
 [submodule "bundle/matchit.zip"]
 	path = bundle/matchit.zip
 	url = https://github.com/vim-scripts/matchit.zip.git
+[submodule "bundle/vim-widl"]
+	path = bundle/vim-widl
+	url = git://github.com/aldafu/vim-widl.git

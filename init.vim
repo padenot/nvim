@@ -1,1 +1,1 @@
-vimrc
+/home/padenot/.vimrc

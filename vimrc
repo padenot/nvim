@@ -21,7 +21,11 @@ let c_comment_strings=1
 syntax on
 " Color scheme.
 set background=dark
-colorscheme solarized
+if has("gui_running")
+  colorscheme solarized
+else
+  colorscheme peachpuff
+endif
 let g:solarized_termcolors=256
 let g:solarized_contrast="high"    "default value is normal
 let g:solarized_visibility="high"    "default value is normal
