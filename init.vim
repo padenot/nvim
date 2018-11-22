@@ -27,6 +27,7 @@ Plug 'othree/yajs.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'rust-lang/rust.vim'
 
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
@@ -166,6 +167,8 @@ augroup filetypedetect
   au FileType python  set tabstop=4 textwidth=79
   " When using make, we shouldn't expand tabs.
   au FileType make set noexpandtab
+  " treat bikeshed spec as html
+  au BufRead,BufNewFile {*.bs} set ft=html
 augroup END
 
 " F5 toogles to Gundo panel
