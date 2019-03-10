@@ -2,9 +2,9 @@
 
 <kbd>,</kbd>: Leader key
 
-<kbd>,</kbd>L: hide or show non-printable characters (shown by default)
+<kbd>,</kbd><kbd>L</kbd>: hide or show non-printable characters (shown by default)
 
-<kbd>,</kbd>A: `rg` the word under cursor
+<kbd>,</kbd><kbd>A</kbd>: `rg` the word under cursor
 
 <kbd>F4</kbd> or <kbd>ctrl</kbd><kbd>e</kbd>: Remove search highlighting
 
