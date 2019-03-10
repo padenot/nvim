@@ -1,30 +1,19 @@
-# Paul's .vim directory
+# padenot's nvim directory
 
-##Keybindings :
-,
+<kbd>,</kbd>: Leader key
 
-> Leader key
+<kbd>,</kbd>L: hide or show non-printable characters (shown by default)
 
-F4
+<kbd>,</kbd>A: `rg` the word under cursor
 
-> Remove search highlighting
+<kbd>F4</kbd> or <kbd>ctrl</kbd><kbd>e</kbd>: Remove search highlighting
 
-F5
+<kbd>ctrl</kbd><kbd>G</kbd>: Gundo panel toggle
 
-> Gundo panel toggle
+<kbd>Ctrl</kbd><kbd>Tab</kbd> or <kbd>Ctrl</kbd> + <kbd>q</kbd>: Alternate between .cpp & .h and other file pairs
 
-Ctrl+Tab or Ctrl + q
+<kbd>ctrl</kbd><kbd>j</kbd> | <kbd>ctrl</kbd><kbd>k</kbd>: Previous/next buffer
 
-> Alternate between .cpp & .h and other file pairs
+<kbd>TAB</kbd>: Fold or unfold. Folds are created automatically
 
-ctrl+j, ctrl+k
-
-> Previous/next buffer
-
-TAB
-
-> Fold or unfold. Folds are created automatically
-
-:w!!
-
-> Write the file when `sudo` has been forgotten
+`:w!!`: Write the file when `sudo` has been forgotten
