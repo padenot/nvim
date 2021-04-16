@@ -1,14 +1,16 @@
 "
 "   _   _(_)_ __ ___  _ __ ___
 "  / \ / / | '_ ` _ \| '__/ __|
-"  \ V /| | | | | | | | | (__
-"   \_/ |_|_| |_| |_|_|  \___|
+"   \ V /| | | | | | | | | (__
+"    \_/ |_|_| |_| |_|_|  \___|
 "
 "
 " Paul ADENOT -- 2011
 "
 
-
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
@@ -42,9 +44,6 @@ let mapleader = ","
 let c_comment_strings=1
 " Enable syntax highlighting
 syntax on
-" let g:solarized_termcolors=256
-" let g:solarized_contrast="high"    "default value is normal
-" let g:solarized_visibility="high"    "default value is normal
 " Put a colored line at 80 characters
 set colorcolumn=80
 " Highlight matched pattern when searching or replacing.
@@ -169,8 +168,8 @@ augroup filetypedetect
   au BufRead,BufNewFile {*.bs} set ft=html noexpandtab
 augroup END
 
-" F5 toogles to Gundo panel
-nnoremap <F5> :GundoToggle<CR>
+" Control U toogles to Gundo panel
+map <C-G> :GundoToggle<CR>
 
 " Control tab or control-q switches between cpp an .h file, as in Eclipse
 map <C-Tab> :FSHere<CR><Esc>
@@ -178,6 +177,7 @@ map <C-Q> :FSHere<CR><Esc>
 
 " Shortcut to rapidly toggle `set list`
 nmap <leader>l :set list!<CR>
+
 
 augroup mycppfiles
   au!
@@ -190,6 +190,7 @@ augroup END
 
 " Type :w!! when forgot sudo and editing a file.
 cmap w!! w !sudo tee % >/dev/null
+cmap Wq wq
 
 " Disable arrows in normal mode
 noremap <up> <nop>
@@ -205,10 +206,9 @@ nnoremap <leader>a :grep <cword><CR>
 let delimitMate_matchpairs = "(:),[:],{:}"
 au FileType html let b:delimitMate_matchpairs = "(:),[:],{:},<:>"
 
-" Press F4 to clear highlighting.
-map <F4> :noh<CR>
-" Allow to paste formatted code nicely
-set pastetoggle=<F3>
+" Press F4 or ctrl-e to clear highlighting.
+map <F4> :nohl<CR>
+map <C-E> :nohl<CR>
 
 " Control-R U inserts an uuid
 imap <C-r>u <C-R>=system('~/bin/uuidgen.py')<cr>
@@ -239,10 +239,6 @@ xmap <silent> ae <Plug>CamelCaseMotion_ae
 
 let g:airline_powerline_fonts = 1
 
-" Color scheme.
-" set background=dark
-colorscheme solarized8
-
 set sw=2
 set ts=2
 let g:indent_guides_guide_size = 2
@@ -257,3 +253,11 @@ let g:neovide_cursor_animation_length=0.01
 
 nmap <leader>b :Buffers<CR>
 nmap <leader>p :Files .<CR>
+
+
+" Color scheme.
+set background=dark
+colorscheme solarized8
+
+set background=dark
+colorscheme solarized8
