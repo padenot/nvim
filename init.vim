@@ -21,18 +21,14 @@ Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
-Plug 'altercation/vim-colors-solarized'
 Plug 'aldafu/vim-widl'
-Plug 'othree/yajs.vim'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'jiangmiao/auto-pairs'
+Plug 'sheerun/vim-polyglot'
+Plug 'yuezk/vim-js'
+Plug 'lifepillar/vim-solarized8'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'rust-lang/rust.vim'
-
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-\ }
 
 call plug#end()
 
@@ -46,9 +42,9 @@ let mapleader = ","
 let c_comment_strings=1
 " Enable syntax highlighting
 syntax on
-let g:solarized_termcolors=256
-let g:solarized_contrast="high"    "default value is normal
-let g:solarized_visibility="high"    "default value is normal
+" let g:solarized_termcolors=256
+" let g:solarized_contrast="high"    "default value is normal
+" let g:solarized_visibility="high"    "default value is normal
 " Put a colored line at 80 characters
 set colorcolumn=80
 " Highlight matched pattern when searching or replacing.
@@ -66,6 +62,7 @@ set formatoptions=tco
 set textwidth=80
 " Incremental search : search befor return is typed
 set incsearch
+set inccommand=nosplit
 " Set the EOL format
 set fileformats=unix,dos
 " Tilda is set as an operator
@@ -84,7 +81,7 @@ set shiftwidth=2
 set ignorecase
 set smartcase
 " Font in GUI mode : https://github.com/andreberg/Meslo-Font
-set guifont=Meslo\ LG\ S\ DZ\ for\ Powerline\ 9
+set guifont=Meslo\ LG\ S\ for\ Powerline:h14
 " remove the useless buttons from gvim
 set guioptions=nomenu
 " Remove menubar
@@ -146,7 +143,8 @@ let g:spell_choices="en,fr"
 " Enable spelling check on .tex and .latex files, as well as rst files
 augroup filetypedetect
   au BufNewFile,BufRead {*.tex} setlocal spell nocindent
-  au BufNewFile,BufRead {*.md,*.mdwn,*.markdown} setlocal spell nocindent ft=markdown
+  au BufNewFile,BufRead {*.txt} setlocal spell nocindent
+  au BufNewFile,BufRead {*.md,*.mdwn,*.markdown,*.mmark} setlocal spell nocindent ft=markdown
   au BufWritePost *.tex :silent !make
   au BufNewFile,BufRead *.rst set syntax=rest
   au BufNewFile,BufRead *.webidl set syntax=idl
@@ -168,7 +166,7 @@ augroup filetypedetect
   " When using make, we shouldn't expand tabs.
   au FileType make set noexpandtab
   " treat bikeshed spec as html
-  au BufRead,BufNewFile {*.bs} set ft=html
+  au BufRead,BufNewFile {*.bs} set ft=html noexpandtab
 augroup END
 
 " F5 toogles to Gundo panel
@@ -215,7 +213,7 @@ set pastetoggle=<F3>
 " Control-R U inserts an uuid
 imap <C-r>u <C-R>=system('~/bin/uuidgen.py')<cr>
 
-set t_Co=256
+" set t_Co=256
 
 " make w work with camelcase words
 map <silent> w <Plug>CamelCaseMotion_w
@@ -242,50 +240,20 @@ xmap <silent> ae <Plug>CamelCaseMotion_ae
 let g:airline_powerline_fonts = 1
 
 " Color scheme.
-set background=dark
-colorscheme solarized
+" set background=dark
+colorscheme solarized8
 
 set sw=2
 set ts=2
 let g:indent_guides_guide_size = 2
 let g:indent_guides_start_level= 1
-let g:indent_guides_auto_colors = 0
+let g:indent_guides_auto_colors = 1
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=234
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=235
 
-" LANGAGE SERVER CONFIG
-set hidden
+set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
 
-let g:LanguageClient_autoStart=1
-let g:LanguageClient_selectionUI="fzf"
+let g:neovide_cursor_animation_length=0.01
 
-" Disable these to get language client logging.
-let g:LanguageClient_loggingFile="/tmp/neovim-lang-client.log"
-let g:LanguageClient_loggingLevel="INFO"
-
-let g:LanguageClient_serverCommands = {}
-
-if executable('rustup')
-    let g:LanguageClient_serverCommands['rust'] = ['rustup', 'run', 'nightly', 'rls']
-endif
-
-if executable('javascript-typescript-stdio')
-    let g:LanguageClient_serverCommands['javascript'] = ['javascript-typescript-stdio']
-endif
-
-if executable('cquery')
-    let g:LanguageClient_serverCommands['cpp'] = [
-        \ 'cquery',
-        \  '--log-file=/tmp/cq.log',
-        \  '--init={"cacheDirectory":"$HOME/.cache/cquery"}'
-    \ ]
-endif
-
-nnoremap <silent> <leader>h :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> <leader>r :call LanguageClient_textDocument_references()<CR>
-nnoremap <silent> <leader>R :call LanguageClient_textDocument_rename()<CR>"
-nnoremap <silent> <leader>D :call LanguageClient_textDocument_definition({'gotoCmd': 'vsplit'})<CR>
-nnoremap <silent> <leader>d :call LanguageClient_textDocument_definition()<CR>
-
-" END OF LANGAGE SERVER CONFIG
-
+nmap <leader>b :Buffers<CR>
+nmap <leader>p :Files .<CR>

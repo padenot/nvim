@@ -1,6 +1,13 @@
-# Paul's .vim directory
+# Paul's `~/.configu/nvim` directory
 
-##Keybindings :
+## Installation
+
+Clone in `~/.config/nvim`
+
+Open `neovim` and do `:PlugInstall`.
+
+## Keybindings :
+
 ,
 
 > Leader key
@@ -28,3 +35,11 @@ TAB
 :w!!
 
 > Write the file when `sudo` has been forgotten
+
+,b
+
+> Fuzzy search in open buffers
+
+,f
+
+> Fuzzy search in files under `cwd`
