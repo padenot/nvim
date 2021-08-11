@@ -35,6 +35,7 @@ Plug 'junegunn/fzf.vim'
 call plug#end()
 
 """ Standard ViM options
+set hidden
 set mouse=a
 set nocp
 set ttyfast
@@ -80,7 +81,7 @@ set shiftwidth=2
 set ignorecase
 set smartcase
 " Font in GUI mode : https://github.com/andreberg/Meslo-Font
-set guifont=Meslo\ LG\ S\ for\ Powerline:h14
+set guifont=Meslo\ LG\ S\ for\ Powerline:h12
 " remove the useless buttons from gvim
 set guioptions=nomenu
 " Remove menubar
@@ -91,6 +92,8 @@ set guioptions+=ic
 set guioptions-=b
 " Copy visual area to paste buffer
 set go+=a
+" The unamed register is the system's copy buffer
+set clipboard=unnamedplus
 " Allow backspace in insert mode like in any other text editor
 set backspace=indent,eol,start 
 " Set the dictionnary to french
@@ -253,6 +256,7 @@ let g:neovide_cursor_animation_length=0.01
 
 nmap <leader>b :Buffers<CR>
 nmap <leader>p :Files .<CR>
+nmap <leader>w :bd<CR>
 
 
 " Color scheme.
@@ -261,3 +265,5 @@ colorscheme solarized8
 
 set background=dark
 colorscheme solarized8
+
+set autowrite
