@@ -168,7 +168,9 @@ augroup filetypedetect
   " When using make, we shouldn't expand tabs.
   au FileType make set noexpandtab
   " treat bikeshed spec as html
-  au BufRead,BufNewFile {*.bs} set ft=html noexpandtab
++   au BufRead,BufNewFile {*.bs} set ft=html
++   au BufRead,BufNewFile {*.bs} set noexpandtab
++ 
 augroup END
 
 " Control U toogles to Gundo panel
