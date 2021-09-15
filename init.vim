@@ -24,15 +24,17 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'aldafu/vim-widl'
-Plug 'nathanaelkane/vim-indent-guides'
 Plug 'jiangmiao/auto-pairs'
 Plug 'sheerun/vim-polyglot'
 Plug 'yuezk/vim-js'
 Plug 'lifepillar/vim-solarized8'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'Yggdroot/indentLine'
 
 call plug#end()
+
+let g:indentLine_char = '│'
 
 """ Standard ViM options
 set hidden
@@ -81,7 +83,7 @@ set shiftwidth=2
 set ignorecase
 set smartcase
 " Font in GUI mode : https://github.com/andreberg/Meslo-Font
-set guifont=Meslo\ LG\ S\ for\ Powerline:h12
+set guifont=Meslo\ LG\ S\ for\ Powerline:h14
 " remove the useless buttons from gvim
 set guioptions=nomenu
 " Remove menubar
@@ -150,7 +152,6 @@ augroup filetypedetect
   au BufWritePost *.tex :silent !make
   au BufNewFile,BufRead *.rst set syntax=rest
   au BufNewFile,BufRead *.webidl set syntax=idl
-  autocmd FileType c,cpp,python,javascript IndentGuidesEnable
   " After opening a file, put the cursor when it was last time this file was edited.
   autocmd BufReadPost * normal `"
   " SConscript & SConstruct are python
@@ -168,9 +169,8 @@ augroup filetypedetect
   " When using make, we shouldn't expand tabs.
   au FileType make set noexpandtab
   " treat bikeshed spec as html
-+   au BufRead,BufNewFile {*.bs} set ft=html
-+   au BufRead,BufNewFile {*.bs} set noexpandtab
-+ 
+  au BufRead,BufNewFile {*.bs} set ft=html
+  au BufRead,BufNewFile {*.bs} set noexpandtab
 augroup END
 
 " Control U toogles to Gundo panel
@@ -246,11 +246,6 @@ let g:airline_powerline_fonts = 1
 
 set sw=2
 set ts=2
-let g:indent_guides_guide_size = 2
-let g:indent_guides_start_level= 1
-let g:indent_guides_auto_colors = 1
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=234
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=235
 
 set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
 
