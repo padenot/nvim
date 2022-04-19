@@ -27,12 +27,16 @@ Plug 'aldafu/vim-widl'
 Plug 'jiangmiao/auto-pairs'
 Plug 'sheerun/vim-polyglot'
 Plug 'yuezk/vim-js'
-Plug 'lifepillar/vim-solarized8'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/indentLine'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'ishan9299/nvim-solarized-lua'
+Plug 'moll/vim-bbye'
 
 call plug#end()
+
+set conceallevel=0
 
 let g:indentLine_char = '│'
 
@@ -83,7 +87,14 @@ set shiftwidth=2
 set ignorecase
 set smartcase
 " Font in GUI mode : https://github.com/andreberg/Meslo-Font
-set guifont=Meslo\ LG\ S\ for\ Powerline:h14
+if has("unix")
+  let s:uname = system("uname")
+  if s:uname == "Darwin\n"
+    set guifont=Meslo\ LG\ S\ for\ Powerline:h14
+  else
+    set guifont=Meslo\ LG\ S\ for\ Powerline:h12
+  endif
+endif
 " remove the useless buttons from gvim
 set guioptions=nomenu
 " Remove menubar
@@ -253,14 +264,34 @@ let g:neovide_cursor_animation_length=0.01
 
 nmap <leader>b :Buffers<CR>
 nmap <leader>p :Files .<CR>
-nmap <leader>w :bd<CR>
+cnoreabbrev bd :Bdelete<CR>
+nmap <leader>w :Bdelete<CR>
 
 
 " Color scheme.
 set background=dark
-colorscheme solarized8
+colorscheme solarized-low
 
 set background=dark
-colorscheme solarized8
+colorscheme solarized-low
 
 set autowrite
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
+EOF
+
+let g:neovide_cursor_animation_length=0.005
+let g:neovide_cursor_trail_size=0.3
+
+set conceallevel=0
