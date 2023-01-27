@@ -34,13 +34,12 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'aldafu/vim-widl'
 Plug 'jiangmiao/auto-pairs'
-Plug 'sheerun/vim-polyglot'
 Plug 'yuezk/vim-js'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-Plug 'ishan9299/nvim-solarized-lua'
+Plug 'lifepillar/vim-solarized8'
 Plug 'moll/vim-bbye'
 
 call plug#end()
@@ -101,7 +100,7 @@ if has("unix")
   if s:uname == "Darwin\n"
     set guifont=Meslo\ LG\ S\ for\ Powerline:h14
   else
-    set guifont=Meslo\ LG\ S\ for\ Powerline:h12
+    set guifont=Meslo\ LG\ S\ for\ Powerline:h18
   endif
 endif
 " remove the useless buttons from gvim
@@ -168,7 +167,7 @@ let g:spell_choices="en,fr"
 augroup filetypedetect
   au BufNewFile,BufRead {*.tex} setlocal spell nocindent
   au BufNewFile,BufRead {*.txt} setlocal spell nocindent
-  au BufNewFile,BufRead {*.md,*.mdwn,*.markdown,*.mmark} setlocal spell nocindent ft=markdown
+  au BufNewFile,BufRead {*.md,*.mdwn,*.markdown,*.mmark} setlocal spell nocindent ft=markdown IndentLinesDisable conceallevel=0
   au BufWritePost *.tex :silent !make
   au BufNewFile,BufRead *.rst set syntax=rest
   au BufNewFile,BufRead *.webidl set syntax=idl
@@ -279,10 +278,8 @@ nmap <leader>w :Bdelete<CR>
 
 " Color scheme.
 set background=dark
-colorscheme solarized-low
+autocmd vimenter * ++nested colorscheme solarized8
 
-set background=dark
-colorscheme solarized8
 set autowrite
 
 lua <<EOF
@@ -301,5 +298,3 @@ EOF
 
 let g:neovide_cursor_animation_length=0.005
 let g:neovide_cursor_trail_size=0.3
-
-set conceallevel=0
