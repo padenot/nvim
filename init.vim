@@ -29,6 +29,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'lifepillar/vim-solarized8'
 Plug 'moll/vim-bbye'
+Plug 'padenot/ipdl.nvim'
 
 call plug#end()
 
