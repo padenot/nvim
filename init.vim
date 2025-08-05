@@ -236,3 +236,4 @@ set ts=2
 
 set autowrite
 
+lua require('lua')
