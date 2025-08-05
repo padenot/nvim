@@ -9,18 +9,6 @@
 "
 "
 
-if has("unix")
-  let s:uname = system("uname")
-  if s:uname == "Darwin\n"
-    let g:python3_host_prog = '/usr/local/bin/python3'
-    let g:loaded_python_provider = 0
-  endif
-endif
-
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
 
@@ -94,25 +82,6 @@ set shiftwidth=2
 " Case sensitive seach if a capital is used in the search pattern
 set ignorecase
 set smartcase
-" Font in GUI mode : https://github.com/andreberg/Meslo-Font
-if has("unix")
-  let s:uname = system("uname")
-  if s:uname == "Darwin\n"
-    set guifont=Meslo\ LG\ S\ for\ Powerline:h14
-  else
-    set guifont=Meslo\ LG\ S\ for\ Powerline:h18
-  endif
-endif
-" remove the useless buttons from gvim
-set guioptions=nomenu
-" Remove menubar
-set guioptions-=m
-" Add vim icon and use console instead of popups
-set guioptions+=ic
-" Remove bottom scrolling bar.
-set guioptions-=b
-" Copy visual area to paste buffer
-set go+=a
 " The unamed register is the system's copy buffer
 set clipboard=unnamedplus
 " Allow backspace in insert mode like in any other text editor
@@ -177,8 +146,6 @@ augroup filetypedetect
   au BufRead,BufNewFile {SConscript,SConstruct}  set ft=python
   " .rl (ragel parsing file) should be highlighted as C
   au BufRead,BufNewFile {*.rl} set ft=c
-  " .ipdl (inter-process-definition-language) should be highlighted as C++
-  au BufRead,BufNewFile {*.ipdl} set ft=cpp
   " highlight .sjs (server side js) as javacript
   au BufRead,BufNewFile {*.sjs} set ft=javascript
   " .inc are XML in mozilla codebase
@@ -238,6 +205,8 @@ map <C-E> :nohl<CR>
 imap <C-r>u <C-R>=system('~/bin/uuidgen.py')<cr>
 
 " set t_Co=256
+set termguicolors
+colorscheme solarized8
 
 " make w work with camelcase words
 map <silent> w <Plug>CamelCaseMotion_w
@@ -261,40 +230,8 @@ xmap <silent> ab <Plug>CamelCaseMotion_ab
 omap <silent> ae <Plug>CamelCaseMotion_ae
 xmap <silent> ae <Plug>CamelCaseMotion_ae
 
-let g:airline_powerline_fonts = 1
-
 set sw=2
 set ts=2
 
-set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
-
-let g:neovide_cursor_animation_length=0.01
-
-nmap <leader>b :Buffers<CR>
-nmap <leader>p :Files .<CR>
-cnoreabbrev bd :Bdelete<CR>
-nmap <leader>w :Bdelete<CR>
-
-
-" Color scheme.
-set background=dark
-autocmd vimenter * ++nested colorscheme solarized8
-
 set autowrite
 
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
-}
-EOF
-
-let g:neovide_cursor_animation_length=0.005
-let g:neovide_cursor_trail_size=0.3
